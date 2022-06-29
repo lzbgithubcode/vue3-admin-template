@@ -2,6 +2,17 @@
 node_modules
 /dist
 
+.history
+.idea
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+yarn*
+pnpm*
+enhance
+
 
 # local env files
 .env.local

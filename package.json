@@ -2,16 +2,21 @@
   "name": "vue3-admin-template",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@6.32.3",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "vue": "^3.2.26",
+    "vue-router": "^4.0.14",
+    "vuex": "^4.0.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.26"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.11",
