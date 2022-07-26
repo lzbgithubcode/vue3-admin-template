@@ -1,26 +1,27 @@
+/*
+ * @Author: lzb
+ * @Date: 2022-06-29 17:46:10
+ */
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
+import RouterManager from "./RouterManager.js";
 
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  },
-];
-
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
-});
+const createRouterFunc = () => {
+  return createRouter({
+    history: createWebHistory(),
+    scrollBehavior: () => ({ top: 0 }),
+    routes: RouterManager.getStaticRoutes(),
+  });
+};
+const router = createRouterFunc();
+// 重写路由的push方法 - 解决重复面包屑重复路由问题lzb
+const routerPush = router.push;
+router.push = function push(location) {
+  return routerPush.call(this, location).catch((error) => error);
+};
+export function resetRouter() {
+  const newRouter = createRouterFunc();
+  // 重置路由
+  router.matcher = newRouter.matcher;
+}
 
 export default router;

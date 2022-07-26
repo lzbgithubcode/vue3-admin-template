@@ -5,15 +5,18 @@
   "packageManager": "pnpm@6.32.3",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "element-plus": "^2.2.6",
+    "js-cookie": "^3.0.1",
+    "nprogress": "^0.2.0",
+    "pinia": "^2.0.14",
     "vue": "^3.2.26",
-    "vue-router": "^4.0.14",
-    "vuex": "^4.0.2"
+    "vue-router": "^4.0.14"
   },
   "peerDependencies": {
     "vue": "^3.2.26"
