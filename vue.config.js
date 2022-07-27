@@ -1,8 +1,6 @@
 const path = require("path");
 const defaultSettings = require("./src/settings.js");
-const mockServer = defaultSettings.openMockServe
-  ? require("./mock/mock-serve")
-  : null;
+const openMockServe = defaultSettings.openMockServe;
 
 function resolve(dir) {
   return path.join(__dirname, dir);
@@ -135,10 +133,10 @@ module.exports = {
   devServer: {
     port,
     open: false,
-    overlay: {
-      warnings: false,
-      errors: true,
+    setupMiddlewares(middlewares, devServer) {
+      const mockServer =  require("./mock/mock-serve")
+      openMockServe ? mockServer(devServer.app) : null;
+      return middlewares;
     },
-    before: mockServer,
   },
 };

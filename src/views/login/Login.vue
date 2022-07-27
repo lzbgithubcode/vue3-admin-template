@@ -1,5 +1,10 @@
 <template>
-  <div>我是登录</div>
+  <div>
+    <Particles
+       id="tsparticles"
+      :options="particlesOptions"
+    />
+  </div>
 </template>
 
 <script src="./login.js"></script>
