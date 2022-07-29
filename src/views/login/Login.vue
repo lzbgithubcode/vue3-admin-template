@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="p-login-wrapper">
     <Particles
-       id="tsparticles"
+     id="tsparticles"
       :options="particlesOptions"
+      :particlesInit="particlesInit"
     />
   </div>
 </template>
