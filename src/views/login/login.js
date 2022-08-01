@@ -14,11 +14,11 @@ export default defineComponent({
           detectsOn: 'canvas',
           events: {
             onClick: { // 开启鼠标点击的效果
-              enable: true,
+              enable: false,
               mode: 'push'
             },
             onHover: { // 开启鼠标悬浮的效果(线条跟着鼠标移动)
-              enable: true,
+              enable: false,
               mode: 'grab'
             },
             resize: true

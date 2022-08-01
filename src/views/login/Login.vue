@@ -5,9 +5,15 @@
       :options="particlesOptions"
       :particlesInit="particlesInit"
     />
+
+    <div class="m-login-wrapper">
+        我是登录的内容
+    </div>
   </div>
 </template>
 
 <script src="./login.js"></script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "./login.scss"
+</style>
