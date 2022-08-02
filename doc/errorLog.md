@@ -13,3 +13,9 @@
 
 
 #### 3. 运行`vite dev`报错:`await import('source-map-support').then((r) => r.default.install())`
+解决方案: `更新node版本到v15.6.0`
+
+
+#### 4. 加载scss文件报错: `internal server error preprocessor dependency sass not found. did you install it vite`
+解决方案: `安装sass 重新启动服务`
+

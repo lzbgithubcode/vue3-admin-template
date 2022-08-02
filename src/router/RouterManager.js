@@ -1,4 +1,4 @@
-import Layout from "@/layout";
+import Layout from "@/layout/index.vue";
 import { BaseRoute } from "../utils/constants/RoutePathConstants";
 export default {
   /**

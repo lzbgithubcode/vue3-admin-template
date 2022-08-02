@@ -1,8 +1,10 @@
 import { defineConfig, loadEnv } from 'vite'
-import {join} from "path";
+import  {join} from "path";
 import vue from '@vitejs/plugin-vue'
 
-console.log("====文件======",import.meta);
+function resolve(dir) {
+  return join(__dirname, dir)
+}
 export default defineConfig(({command, mode})=>{
 
   const env = loadEnv(mode, process.cwd(),"");
@@ -11,7 +13,7 @@ export default defineConfig(({command, mode})=>{
     plugins: [vue()],
     resolve:{
       alias: {
-        "@": join(__dirname, "src"),
+        "@": resolve("src"),
       }
     },
    
@@ -27,6 +29,7 @@ export default defineConfig(({command, mode})=>{
      server:{
       port: 8082, // 端口
       https: false,
+      host: true, // 显示ip
       open: true, // 直接打开浏览器配置
     },
   }
