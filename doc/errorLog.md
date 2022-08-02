@@ -2,3 +2,14 @@
 
 原因: vue-loader版本低
 解决方案: `"vue-loader": "^17.0.0",`
+
+
+#### 2. 使用vite运行报错: ` Internal server error: URI malformed`
+原因是html文件问题 <%=BASE_URL不识别%>
+解决方案
+```
+  删除  `<link rel="icon" href="<%= BASE_URL %>favicon.ico">`
+```
+
+
+#### 3. 运行`vite dev`报错:`await import('source-map-support').then((r) => r.default.install())`
