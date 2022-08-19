@@ -1,14 +1,13 @@
 <template>
   <div class="p-login-wrapper">
-    <Particles
+   <!-- <Particles
      id="tsparticles"
       :options="particlesOptions"
       :particlesInit="particlesInit"
-    />
+    />  -->
 
-    <div class="m-login-wrapper">
-        我是登录的内容
-    </div>
+  
+   
   </div>
 </template>
 
