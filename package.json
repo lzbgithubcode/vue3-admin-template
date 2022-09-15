@@ -46,6 +46,8 @@
     "prettier": "^2.2.1",
     "require-context": "^1.1.0",
     "sass": "^1.54.0",
+    "unplugin-auto-import": "^0.11.2",
+    "unplugin-vue-components": "^0.22.7",
     "vite": "^3.0.4",
     "vue-template-compiler": "^2.7.8"
   }

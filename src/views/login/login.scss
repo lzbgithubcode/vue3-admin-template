@@ -3,5 +3,20 @@
   // .m-login-wrapper{
   //   background-color: rebeccapurple;
   // }
+
+   position: relative;
+  .login-container{
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    .login-form{
+      margin-top: 20px;
+    }
+  }
   
 }

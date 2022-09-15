@@ -88,8 +88,14 @@ export default defineComponent({
         },
         detectRetina: true
       };
+      
+      const formObject = {
+        useName: "",
+        pwd: ""
+      }
          return {
-          particlesOptions
+          particlesOptions,
+          formObject,
          }
     },
     methods:{

@@ -6,12 +6,12 @@ import "./permission";
 import Particles from "vue3-particles";
 
 // 完全引入组件
-import ElementPlus from "element-plus";
-import "element-plus/dist/index.css";
+// import ElementPlus from "element-plus";
+// import "element-plus/dist/index.css";
 
 const app = createApp(App);
 
-app.use(ElementPlus);
+// app.use(ElementPlus);
 app.use(Particles);
 app.use(store);
 app.use(router);
