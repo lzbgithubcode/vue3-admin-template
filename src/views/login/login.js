@@ -1,9 +1,10 @@
 import { defineComponent, reactive, toRefs } from "vue";
 import { loadFull } from "tsparticles";
 
+
 export default defineComponent({
-    setup(props, context) {
-     const particlesOptions ={
+    setup(props, context){
+       const particlesOptions ={
       background: {
         color: {
           value: "#000000",
@@ -87,15 +88,15 @@ export default defineComponent({
           }
         },
         detectRetina: true
-      };
+        };
       
-      const formObject = {
+      const  formObject = reactive({
         useName: "",
         pwd: ""
-      }
+      });
          return {
-          particlesOptions,
-          formObject,
+           particlesOptions,
+           formObject,
          }
     },
     methods:{
@@ -104,6 +105,12 @@ export default defineComponent({
        */
       async particlesInit(engine){
          await loadFull(engine);
-      }
+      },
+      /**
+       * 点击登录
+       */
+       onClickLoginEvent(){
+         console.log('点击登录',this.formObject);
+       }
     }
 });

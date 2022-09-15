@@ -16,6 +16,26 @@
     box-sizing: border-box;
     .login-form{
       margin-top: 20px;
+
+      .el-form-item .el-form-item__content{
+        display: flex;
+        flex-wrap: nowrap;
+
+        .el-input{
+          width: 200px;
+          margin-left: 10px;
+        }
+        .el-button{
+          width: 100%;
+        }
+      }
+
+      // 协议
+      .protocol-group{
+        margin-top: 20px;
+        font-size: 12px;
+        color: #666666;
+      }
     }
   }
   

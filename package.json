@@ -49,6 +49,7 @@
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.7",
     "vite": "^3.0.4",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vue-template-compiler": "^2.7.8"
   }
 }
