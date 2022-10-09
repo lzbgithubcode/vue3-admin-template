@@ -19,3 +19,7 @@
 #### 4. 加载scss文件报错: `internal server error preprocessor dependency sass not found. did you install it vite`
 解决方案: `安装sass 重新启动服务`
 
+
+
+#### 5. 项目运行报错`await import('source-map-support').then((r) => r.default.install())`,`SyntaxError: Unexpected reserved word`
+解决方案:升级node版本，至少**14.18+**
