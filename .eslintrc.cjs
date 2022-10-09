@@ -5,7 +5,11 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  extends: ["eslint:recommended", "plugin:vue/vue3-recommended", "prettier"],
+  extends: [
+    "eslint:recommended",
+    "plugin:vue/vue3-recommended",
+    "plugin:eslint-plugin-prettier",
+  ],
   parser: "@babel/eslint-parser",
   parserOptions: {
     requireConfigFile: false,
@@ -21,8 +25,8 @@ module.exports = {
     "import/extensions": "off",
     "import/no-extraneous-dependencies": [2, { devDependencies: true }],
     "import/no-unresolved": [2, { ignore: ["^@"] }],
-    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-console": import.meta.env === "production" ? "error" : "off",
+    "no-debugger": import.meta.env === "production" ? "error" : "off",
     "prettier/prettier": [
       "error",
       {

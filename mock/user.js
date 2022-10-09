@@ -1,11 +1,11 @@
-module.exports = [
+export default [
   // user login
   {
-    url: "/login",
+    url: "/api/login",
     type: "post",
     response: (config) => {
-      const { userName, passwd } = config.body;
-      console.log(`登录用户${userName}, 密码${passwd}`);
+      const { useName, pwd } = config.body;
+      console.log(`登录用户${useName}, 密码${pwd}`);
 
       return {
         code: 0,
@@ -26,7 +26,7 @@ module.exports = [
 
   // user logout
   {
-    url: "/logout",
+    url: "/api/logout",
     type: "post",
     response: () => {
       return {

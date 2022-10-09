@@ -1,12 +1,12 @@
-/*
- * @Author: lzb
- * @Date: 2022-07-01 15:50:03
- */
+import http from "./http";
+
+const baseURL = import.meta.env.VITE_BASE_API;
+
 export default {
-  login() {
-    return new Promise((resolve, reject) => {});
+  login(param) {
+    return http.post(`${baseURL}/api/login`, param);
   },
-  logout() {
-    return new Promise((resolve, reject) => {});
+  logout(param) {
+    return http.post(`${baseURL}/api/logout`, param);
   },
 };
