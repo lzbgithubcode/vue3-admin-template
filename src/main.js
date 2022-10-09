@@ -11,11 +11,8 @@ import Particles from "vue3-particles";
 
 const app = createApp(App);
 
-
-
 // 导入所有自定义svg图标
-import 'virtual:svg-icons-register';
-
+import "virtual:svg-icons-register";
 
 // 注册全局组件
 import SvgIcon from "./components/svg-icon/index.vue";
