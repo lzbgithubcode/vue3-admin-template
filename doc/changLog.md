@@ -6,3 +6,9 @@
 ##### 2022-10-09
 
 - 配置 vscode 的代码格式化
+- 配置 mock 服务`vite-plugin-mock`
+- 编写基础 axios 的 http 请求简单封装
+
+##### 2022-10-10
+
+- 本地数据保存[pinia-plugin-persist](https://seb-l.github.io/pinia-plugin-persist/advanced/custom-key.html)

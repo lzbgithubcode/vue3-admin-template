@@ -22,6 +22,7 @@
     "js-cookie": "^3.0.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.17",
+    "pinia-plugin-persist": "^1.0.0",
     "tsparticles": "^2.1.4",
     "tsparticles-engine": "^2.1.4",
     "vue": "^3.2.26",
