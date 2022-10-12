@@ -1,4 +1,5 @@
 import { useUserStore } from "../../store/modules/user";
+import { usePermissionStore } from "../../store/modules/permission";
 /**
  * 登录
  */

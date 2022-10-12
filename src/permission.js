@@ -14,10 +14,10 @@ import { useUserStore } from "./store/modules/user";
 ProgressUtil.initProgress();
 
 // 不验证token的白名单
-const whiteNoTokenList = [BaseRoute.LOGIN_PATH];
+const whiteNoTokenList = [BaseRoute.LOGIN_PATH, BaseRoute.ERROR.NO_SOURCE_PATH];
 
 router.beforeEach(async (to) => {
-  console.log("路由守卫=======", to);
+  console.log("路由守卫=======", to, router.getRoutes());
   // 开始进度条
   ProgressUtil.startProgress();
 
@@ -44,7 +44,6 @@ router.beforeEach(async (to) => {
   // 判断是否有角色
   const useStore = useUserStore();
   const hasRoles = useStore.roles && useStore.roles.length > 0;
-  debugger;
 
   // 4. 有角色  且路由已经增加
   const isHas = hasRoles && isLoaded;
@@ -53,15 +52,21 @@ router.beforeEach(async (to) => {
   } else {
     // 路由没有加载
     try {
-      // 加载路径
-      await RouteUtil.reloadRoutes();
-      return { ...to, replace: true };
+      // 动态获取路由
+      await RouteUtil.generateRoutes(useStore.roles);
+      //  加载完成还是有路由
+      if (!RouteUtil.routeIsLoaded(to.name)) {
+        return { ...to, replace: true };
+      } else {
+        // 加载完成还是没有 - 找不到资源
+        return BaseRoute.ERROR.NO_SOURCE_PATH;
+      }
     } catch (error) {
       // 移除登录数据
       await useStore.resetUserStore();
-      next(`/login?redirect=${to.path}`);
       ProgressUtil.stopProgress();
-      console.log("路由加载失败");
+      console.log("路由加载失败", error);
+      return `/login?redirect=${to.path}`;
     }
   }
 });

@@ -74,6 +74,7 @@ export default defineConfig(({ command, mode }) => {
     },
     // server 配置
     server: {
+      cors: true, // 类型： boolean | CorsOptions 为开发服务器配置 CORS。默认启用并允许任何源
       port: 8082, // 端口
       https: false,
       host: true, // 显示ip

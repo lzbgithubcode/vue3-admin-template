@@ -1,8 +1,10 @@
 import { defineComponent, reactive, toRefs } from "vue";
 import { loadFull } from "tsparticles";
 import { login } from "../../utils/user/UserUtils";
+import { BaseRoute } from "../../utils/constants/RoutePathConstants";
 
 export default defineComponent({
+  name: "Login",
   setup(props, context) {
     const particlesOptions = {
       background: {
@@ -117,7 +119,7 @@ export default defineComponent({
       console.log("点击登录", this.formObject);
       const param = this.formObject;
       login(param).then((res) => {
-        console.log("登录成功======", res);
+        this.$router.push(BaseRoute.FIX_PATH);
       });
     },
   },

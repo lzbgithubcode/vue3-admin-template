@@ -19,4 +19,12 @@ export const BaseRoute = {
    * 中间路由
    */
   REDIRECT_PATH: "/redirect",
+
+  /**
+   * 错误路由
+   */
+  ERROR: {
+    NO_SOURCE_PATH: "/404", // 没有资源
+    NO_PERMISSIONS_PATH: "/401", // 没权限
+  },
 };
