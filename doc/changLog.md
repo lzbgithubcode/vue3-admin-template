@@ -12,3 +12,7 @@
 ##### 2022-10-10
 
 - 本地数据保存[pinia-plugin-persist](https://seb-l.github.io/pinia-plugin-persist/advanced/custom-key.html)
+
+##### 2022-10-12
+
+- 动态路由加载
