@@ -1,14 +1,19 @@
+import router from "./index.js";
+
 export default {
   /**
-   * 路由是否已经被加载
+   * 检测路由是否存在
    */
-  routeIsLoaded(path) {
-    // 检测有路由是否加入, 没有则加入;
-    let existsPath = path;
-    if (!existsPath) {
-      console.log("111");
+  routeIsLoaded(name) {
+    // 检测有路由是否存在
+    let existsName = name;
+    if (!existsName || existsName.length == 0) {
+      return false;
+    } else {
+      return router.hasRoute(name);
     }
-    return true;
   },
-  reloadRoutes() {},
+  reloadRoutes() {
+    debugger;
+  },
 };

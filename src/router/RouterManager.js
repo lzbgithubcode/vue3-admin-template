@@ -22,6 +22,11 @@ export default {
         component: () => import("@/views/login/Login.vue"),
         hidden: true,
       },
+      {
+        path: BaseRoute.LOGIN_PATH,
+        component: () => import("@/views/login/Login.vue"),
+        hidden: true,
+      },
     ];
   },
   /**

@@ -17,13 +17,14 @@ ProgressUtil.initProgress();
 const whiteNoTokenList = [BaseRoute.LOGIN_PATH];
 
 router.beforeEach(async (to) => {
+  console.log("路由守卫=======", to);
   // 开始进度条
   ProgressUtil.startProgress();
 
   // 设置页面标题
   document.title = getPageTitle(to.meta.title);
 
-  // 1. 不用校验token的白名单
+  // 1. 不用校验token的白名单 + 路由存在
   if (whiteNoTokenList.indexOf(to.path) !== -1) {
     ProgressUtil.stopProgress();
     return true;
@@ -38,11 +39,12 @@ router.beforeEach(async (to) => {
   }
 
   // 3. 有token -> 判断路由加载
-  const isLoaded = RouteUtil.routeIsLoaded();
+  const isLoaded = RouteUtil.routeIsLoaded(to.name);
 
   // 判断是否有角色
   const useStore = useUserStore();
   const hasRoles = useStore.roles && useStore.roles.length > 0;
+  debugger;
 
   // 4. 有角色  且路由已经增加
   const isHas = hasRoles && isLoaded;
@@ -55,6 +57,10 @@ router.beforeEach(async (to) => {
       await RouteUtil.reloadRoutes();
       return { ...to, replace: true };
     } catch (error) {
+      // 移除登录数据
+      await useStore.resetUserStore();
+      next(`/login?redirect=${to.path}`);
+      ProgressUtil.stopProgress();
       console.log("路由加载失败");
     }
   }
