@@ -46,6 +46,7 @@ export default {
       {
         path: BaseRoute.ROOT_PATH,
         redirect: BaseRoute.FIX_PATH,
+        component: Layout,
         children: [
           {
             path: "home",
