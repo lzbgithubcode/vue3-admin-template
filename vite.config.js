@@ -21,15 +21,19 @@ export default defineConfig(({ command, mode }) => {
 
   const pluginList = [vue()];
 
-  // 自定义导入插件
+  // 自定义element-plus按需导入插件
   pluginList.push(
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver({})],
     })
   );
   pluginList.push(
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ElementPlusResolver({
+          importStyle: "sass", // 设置导入样式sass
+        }),
+      ],
     })
   );
 

@@ -1,7 +1,8 @@
-// @forward 'element-plus/theme-chalk/src/common/var.scss' with (
-//   $colors:(
-//     'primary': (
-//       'base': #003261,
-//     ),
-//   )
-// );
+// 可以在https://github.com/element-plus/element-plus/blob/dev/packages/theme-chalk/src/common/var.scss 查看要覆盖的变量
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': rgb(128, 0, 26),
+    ),
+  ),
+);
