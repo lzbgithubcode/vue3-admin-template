@@ -3,6 +3,7 @@ import { loadFull } from "tsparticles";
 import { login } from "../../utils/user/UserUtils";
 import { BaseRoute } from "../../utils/constants/RoutePathConstants";
 
+
 export default defineComponent({
   name: "Login",
   setup(props, context) {
