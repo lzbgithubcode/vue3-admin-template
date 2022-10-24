@@ -1,4 +1,16 @@
 
+// 侧边菜单颜色
+$menuText: #bfcbd9;
+$menuActiveText: #409eff;
+$subMenuActiveText: #f4f4f5;
+
+$menuBg: #304156;
+$menuHover: #263445;
+
+$subMenuBg: #1f2d3d;
+$subMenuHover: #001528;
+
+
 // 侧边栏
 $sideBarMaxWidth: 180px;
 $sideBarMinWidth: 54px;
@@ -6,5 +18,18 @@ $sideBarMinWidth: 54px;
 
 // 导航条
 $navigatorLogoBarHeight: 40px;
+
+
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarMaxWidth: $sideBarMaxWidth;
+  sideBarMinWidth: $sideBarMinWidth;
+}
 
 

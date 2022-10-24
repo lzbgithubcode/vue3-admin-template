@@ -6,7 +6,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import { isExternal } from '@/utils/helper/ValidateHelper';
+import { isExternalURL } from '@/utils/helper/ValidateHelper';
 
 // 定义属性
 const props = defineProps({
@@ -18,7 +18,7 @@ const props = defineProps({
 
 // 定义计算属性
 const type = computed(() => {
-  if (isExternal(props.to.value)) {
+  if (isExternalURL(props.to.value)) {
     return 'a';
   }
   return 'router-link';
@@ -26,7 +26,7 @@ const type = computed(() => {
 
 // 定义方法
 const linkProps = (url) => {
-  if (isExternal(props.to.value)) {
+  if (isExternalURL(props.to.value)) {
     return {
       href: url,
       target: '_blank',
