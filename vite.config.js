@@ -10,6 +10,10 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 // svg 加载
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 
+// icon 按需引入
+import Icons from "unplugin-icons/vite";
+import IconsResolver from "unplugin-icons/resolver";
+
 // mock 服务
 import { viteMockServe } from "vite-plugin-mock";
 
@@ -17,21 +21,33 @@ function resolve(dir) {
   return join(__dirname, dir);
 }
 export default defineConfig(({ command, mode }) => {
-  console.log("=====env=====", mode, command, resolve("src/assets/svg-icons"));
+  // console.log("=====env=====", mode, command, resolve("src/assets/svg-icons"));
 
   const pluginList = [vue()];
 
   // 自定义element-plus按需导入插件
   pluginList.push(
     AutoImport({
-      resolvers: [ElementPlusResolver({})],
+      resolvers: [
+        // 自动导入 Element Plus 相关函数
+        ElementPlusResolver(),
+        // 自动导入图标组件
+        IconsResolver({
+          prefix: "Icon", // 默认是i
+        }),
+      ],
     })
   );
   pluginList.push(
     Components({
       resolvers: [
+        // 自动导入 Element Plus 组件
         ElementPlusResolver({
           importStyle: "sass", // 设置导入样式sass
+        }),
+        // 自动注册图标组件
+        IconsResolver({
+          enabledCollections: ["ep"], // 库的连接符号
         }),
       ],
     })
@@ -44,6 +60,14 @@ export default defineConfig(({ command, mode }) => {
       iconDirs: [resolve("src/assets/svg-icons")],
       // 执行icon name的格式
       symbolId: "icon-[name]",
+    })
+  );
+
+  // icon图标
+  pluginList.push(
+    Icons({
+      compiler: "vue3",
+      autoInstall: true,
     })
   );
 

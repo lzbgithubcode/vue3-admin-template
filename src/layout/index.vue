@@ -1,7 +1,7 @@
 <template>
   <div class="app-layout-wrapper">
 
-    <div>左侧菜单</div>
+    <div class="layout-left-wrapper">左侧菜单</div>
 
     <div class="layout-right-wrapper">
       右侧内容
