@@ -14,6 +14,11 @@ import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 
+// jsx
+import vueJsx from "@vitejs/plugin-vue-jsx";
+
+import { nodePolyfills } from "vite-plugin-node-polyfills";
+
 // mock 服务
 import { viteMockServe } from "vite-plugin-mock";
 
@@ -23,7 +28,17 @@ function resolve(dir) {
 export default defineConfig(({ command, mode }) => {
   // console.log("=====env=====", mode, command, resolve("src/assets/svg-icons"));
 
-  const pluginList = [vue()];
+  const pluginList = [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => {
+            return tag.startsWith("svg-icon"); // (return true)
+          },
+        },
+      },
+    }),
+  ];
 
   // 自定义element-plus按需导入插件
   pluginList.push(
@@ -68,6 +83,17 @@ export default defineConfig(({ command, mode }) => {
     Icons({
       compiler: "vue3",
       autoInstall: true,
+    })
+  );
+
+  // jsx
+  pluginList.push(vueJsx({}));
+
+  //node
+  pluginList.push(
+    nodePolyfills({
+      // Whether to polyfill `node:` protocol imports.
+      protocolImports: true,
     })
   );
 

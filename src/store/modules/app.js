@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
 import defaultSettings from "@/settings.js";
 
-export const useAppStore = defineStore("app", {
+const key = "app";
+export const useAppStore = defineStore(key, {
   state: () => {
     return {
       sidebar: {
@@ -15,13 +16,13 @@ export const useAppStore = defineStore("app", {
 
   actions: {
     // 修改设置
-    M_settings(data) {
+    actionChangeSettings(data) {
       this.$patch((state) => {
         state.settings = { ...state.settings, ...data };
       });
     },
     // 触发侧滑栏
-    M_toggleSideBar(withoutAnimation) {
+    toggleSideBar(withoutAnimation) {
       this.$patch((state) => {
         state.sidebar.opened = !state.sidebar.opened;
         state.sidebar.withoutAnimation = withoutAnimation;
@@ -29,11 +30,20 @@ export const useAppStore = defineStore("app", {
     },
 
     // 关闭侧滑栏
-    M_closeSideBar(withoutAnimation) {
+    closeSideBar(withoutAnimation) {
       this.$patch((state) => {
         state.sidebar.opened = false;
         state.sidebar.withoutAnimation = withoutAnimation;
       });
     },
+  },
+  persist: {
+    enabled: true,
+    strategies: [
+      {
+        key: key,
+        storage: localStorage,
+      },
+    ],
   },
 });

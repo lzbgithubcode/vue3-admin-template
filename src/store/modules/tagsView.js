@@ -1,4 +1,6 @@
 import { defineStore } from "pinia";
+const key = "tagsView";
+
 export const useTagsViewStore = defineStore("tagsView", {
   state: () => {
     return {
@@ -38,5 +40,14 @@ export const useTagsViewStore = defineStore("tagsView", {
         }
       });
     },
+  },
+  persist: {
+    enabled: true,
+    strategies: [
+      {
+        key: key,
+        storage: localStorage,
+      },
+    ],
   },
 });

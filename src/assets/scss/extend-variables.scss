@@ -1,14 +1,16 @@
 
 // 侧边菜单颜色
-$menuText: #bfcbd9;
-$menuActiveText: #409eff;
-$subMenuActiveText: #f4f4f5;
+$menuTextColor: #bfcbd9;
+$menuActiveTextColor: #409eff;
 
 $menuBg: #304156;
 $menuHover: #263445;
 
 $subMenuBg: #1f2d3d;
 $subMenuHover: #001528;
+
+// 侧边菜单高度
+$menuHeight: 50px;
 
 
 // 侧边栏
@@ -18,6 +20,8 @@ $sideBarMinWidth: 54px;
 
 // 导航条
 $navigatorLogoBarHeight: 40px;
+
+
 
 
 

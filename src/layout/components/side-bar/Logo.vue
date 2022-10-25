@@ -1,13 +1,14 @@
 <template>
-  <div class="sidebar-log-container" :class="{ 'collapse': collapse }">
+  <div class="sidebar-log-container">
     <transition name="logoFade">
       <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
         <img v-if="state.logo" :src="state.logo" class="sidebar-logo" />
-        <div v-else class="sidebar-title">{{ state.title }}</div>
+        <span v-else class="sidebar-title">{{ state.title }}</span>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
         <img v-if="state.logo" :src="state.logo" class="sidebar-logo" />
-        <h1 class="sidebar-title">{{ state.title }}</h1>
+        <span class="sidebar-title">{{ state.title }}</span>
+
       </router-link>
     </transition>
   </div>
@@ -39,6 +40,7 @@ const state = reactive({
   text-align: center;
   overflow: hidden;
   background: #2b2f3a;
+  font-size: 14px;
 
   .sidebar-logo-link {
     height: 100%;
@@ -57,8 +59,8 @@ const state = reactive({
       margin: 0;
       color: #fff;
       font-weight: 600;
-      line-height: 50px;
       vertical-align: middle;
+      flex: 1;
     }
   }
 
@@ -69,14 +71,14 @@ const state = reactive({
     }
   }
 
-  // 过渡动画
-  .logoFade-enter-active {
-    transition: opacity 1.5s;
-  }
+  // // 过渡动画
+  // .logoFade-enter-active {
+  //   transition: opacity 1.5s;
+  // }
 
-  .logoFade-enter,
-  .logoFade-leave-to {
-    opacity: 0;
-  }
+  // .logoFade-enter,
+  // .logoFade-leave-to {
+  //   opacity: 0;
+  // }
 }
 </style>

@@ -1,7 +1,8 @@
 import loginApi from "../../api/loginApi";
 import TokenUtil from "../../utils/helper/TokenUtil";
 import { defineStore } from "pinia";
-export const useUserStore = defineStore("user", {
+const key = "user";
+export const useUserStore = defineStore(key, {
   state: () => {
     return {
       token: TokenUtil.getToken(),
@@ -113,7 +114,7 @@ export const useUserStore = defineStore("user", {
     enabled: true,
     strategies: [
       {
-        key: "user",
+        key: key,
         storage: localStorage,
       },
     ],

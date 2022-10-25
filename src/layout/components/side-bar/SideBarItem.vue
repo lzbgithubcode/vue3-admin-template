@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!item.hidden">
+  <div v-if="!item.hidden" class="side-bar-item">
     <template
       v-if="hasOneShowingChild(item.children, item) && (!onlyOneChild.children || onlyOneChild.noShowingChildren) && !item.alwaysShow">
       <Link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
@@ -93,7 +93,7 @@ const resolvePath = (routePath) => {
     const result = window.location.origin + routePath;
     return result;
   }
-  return path.resolve(this.basePath, routePath);
+  return path.resolve(props.basePath, routePath);
 };
 </script>
 <style scoped lang='scss'>

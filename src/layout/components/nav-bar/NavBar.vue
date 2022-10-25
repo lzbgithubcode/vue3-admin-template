@@ -1,5 +1,7 @@
 <template>
-  <div>我是导航</div>
+  <div class="nav-bar-wrapper">
+
+  </div>
 </template>
 
 <script setup>

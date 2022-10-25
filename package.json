@@ -22,6 +22,7 @@
     "element-plus": "^2.2.6",
     "js-cookie": "^3.0.1",
     "nprogress": "^0.2.0",
+    "path-to-regexp": "^6.2.1",
     "pinia": "^2.0.17",
     "pinia-plugin-persist": "^1.0.0",
     "tsparticles": "^2.1.4",
@@ -40,6 +41,7 @@
     "@babel/register": "^7.18.9",
     "@iconify-json/ep": "^1.1.8",
     "@vitejs/plugin-vue": "^3.0.1",
+    "@vitejs/plugin-vue-jsx": "^2.0.1",
     "body-parser": "^1.20.0",
     "chalk": "^4.0.0",
     "chokidar": "^3.4.0",
@@ -56,6 +58,7 @@
     "unplugin-vue-components": "^0.22.7",
     "vite": "^3.0.4",
     "vite-plugin-mock": "^2.9.6",
+    "vite-plugin-node-polyfills": "^0.4.0",
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-template-compiler": "^2.7.8"
   }

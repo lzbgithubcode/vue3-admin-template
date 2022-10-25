@@ -1,5 +1,7 @@
-import elSvgIcon from "@/components/el-svg-icon";
+import ElSvgItem from "./ElSvgItem.vue";
+import svgIcon from "@/components/svg-icon/index.vue";
 
+import { defineComponent } from 'vue';
 export default defineComponent({
   props: {
     meta:{
@@ -11,14 +13,14 @@ export default defineComponent({
     const nodes = [];
     const renderItem = ()=>{
          if(props.meta?.elIcon){
-          nodes.push(<elSvgIcon elSvgName={props.meta?.elIcon}></elSvgIcon>);
+          nodes.push(<ElSvgItem elSvgName={props.meta?.elIcon} class="item-svg-icon"></ElSvgItem>);
          } else if(props.meta?.icon){
-          nodes.push(<svg-icon iconClass={props.meta?.icon}></svg-icon>);
+          nodes.push(<svgIcon iconClass={props.meta?.icon} className="item-svg-icon"></svgIcon>);
          }
 
          // 判断标题
          if(!!props.meta?.title){
-            nodes.push(<span slot="title">{props.meta.title}</span>);
+            nodes.push(<span class="item-title" slot="title">{props.meta.title}</span>);
          }
          return nodes;
     }

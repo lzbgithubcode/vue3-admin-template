@@ -1,7 +1,7 @@
 import RouterManager from "../../router/RouterManager";
 import { defineStore } from "pinia";
-
-export const usePermissionStore = defineStore("permission", {
+const key = "permission";
+export const usePermissionStore = defineStore(key, {
   state: () => {
     return {
       routes: [], // 角色过滤之后的动态路由 + 静态路由
@@ -47,7 +47,7 @@ export const usePermissionStore = defineStore("permission", {
     enabled: true,
     strategies: [
       {
-        key: "permission",
+        key: key,
         storage: localStorage,
       },
     ],
