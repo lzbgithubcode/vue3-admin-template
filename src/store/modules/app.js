@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import defaultSettings from "@/settings.js";
-const useAppStore = defineStore("app", {
+
+export const useAppStore = defineStore("app", {
   state: () => {
     return {
       sidebar: {

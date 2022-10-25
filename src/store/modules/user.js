@@ -13,26 +13,26 @@ export const useUserStore = defineStore("user", {
 
   actions: {
     // 设置token
-    M_setToken(token) {
+    setToken(token) {
       this.$patch((state) => {
         state.token = token;
       });
     },
 
     // 设置角色
-    M_setRoles(roles) {
+    setRoles(roles) {
       this.$patch((state) => {
         state.roles = roles;
       });
     },
     //设置权限
-    M_setPermissions(permissions) {
+    setPermissions(permissions) {
       this.$patch((state) => {
         state.permissions = permissions;
       });
     },
     // 设置用户数据
-    M_setUserData(userData) {
+    setUserData(userData) {
       this.$patch((state) => {
         state.userData = userData;
       });
@@ -50,21 +50,21 @@ export const useUserStore = defineStore("user", {
 
             // 保存用户数据
             if (userData) {
-              this.M_setUserData(userData);
+              this.setUserData(userData);
             }
 
             // 保存token 信息
             if (userData && userData.token) {
-              this.M_setToken(userData.token);
+              this.setToken(userData.token);
               TokenUtil.setToken(userData.token);
             }
 
             // 必须要有角色信息, 没有角色默认角色
-            this.M_setRoles(userData.roles || []);
+            this.setRoles(userData.roles || []);
 
             // 权限
             if (userData && userData.permissions) {
-              this.M_setPermissions(userData.permissions);
+              this.setPermissions(userData.permissions);
             }
 
             resolve && resolve(res);
@@ -99,10 +99,10 @@ export const useUserStore = defineStore("user", {
      */
     resetUserStore() {
       return new Promise((resolve) => {
-        this.M_setToken("");
-        this.M_setRoles([]);
-        this.M_setPermissions([]);
-        this.M_setUserData({});
+        this.setToken("");
+        this.setRoles([]);
+        this.setPermissions([]);
+        this.setUserData({});
         TokenUtil.removeToken();
         resolve(null);
       });

@@ -9,13 +9,13 @@
       </Link>
     </template>
 
-    <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
+    <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
       <template #title>
         <Item v-if="item.meta" :meta="item.meta" />
       </template>
       <SideBarItem v-for="child in item.children" :key="child.path" :is-nest="true" :item="child"
         :base-path="resolvePath(child.path)" class="nest-menu" />
-    </el-submenu>
+    </el-sub-menu>
   </div>
 </template>
 
