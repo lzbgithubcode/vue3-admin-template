@@ -21,7 +21,6 @@ import { useAppStore } from '@/store/modules/app.js';
 
 const appStore = useAppStore();
 const fixedHeader = computed(() => appStore.settings.fixedHeader);
-console.log('=============', fixedHeader);
 </script>
 
 

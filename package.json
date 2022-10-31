@@ -25,6 +25,7 @@
     "path-to-regexp": "^6.2.1",
     "pinia": "^2.0.17",
     "pinia-plugin-persist": "^1.0.0",
+    "screenfull": "^6.0.2",
     "tsparticles": "^2.1.4",
     "tsparticles-engine": "^2.1.4",
     "vue": "^3.2.26",

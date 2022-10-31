@@ -75,4 +75,15 @@ const handleLink = (item) => {
         router.push(pathCompile(path));
     }
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.breadcrumb-wrapper {
+  display: inline-block;
+  font-size: 14px;
+  margin-left: 8px;
+  line-height: $navigatorLogoBarHeight;
+  .no-redirect {
+    color: #97a8be;
+    cursor: text;
+  }
+}
+</style>

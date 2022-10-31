@@ -1,7 +1,7 @@
 <template>
   <div class="p-404-wrapper">
     <div class="m-container">
-      <div class="c-title">404您访问的资源不存在</div>
+      <div class="c-title">401您访问的资源不存在</div>
       <div class="c-operation">
         <el-button>回到首页</el-button>
       </div>
