@@ -9,6 +9,8 @@
 </template>
 
 <script setup>
+
+
 // 定义属性
 const props = defineProps({
   isActive: {
@@ -16,6 +18,8 @@ const props = defineProps({
     default: false,
   },
 });
+
+
 
 // 定义事件
 const emits = defineEmits(['toggleClick']);
