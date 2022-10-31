@@ -26,6 +26,7 @@ import { ref } from 'vue';
 import Link from './Link.vue';
 import Item from './Item';
 import path from 'path';
+import { isRef , isProxy, isReactive, toRef,toRefs} from "vue";
 
 // 属性定义
 const props = defineProps({
@@ -43,6 +44,13 @@ const props = defineProps({
     default: '',
   },
 });
+
+
+const basePath = toRefs(props);
+
+// basePath = "123";
+console.log("------props---",basePath);
+
 
 // =====================================定义方法====================================
 // 是否是有一个子集
