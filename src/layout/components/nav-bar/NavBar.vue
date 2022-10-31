@@ -30,6 +30,13 @@ import ScreenFullButton from './ScreenFullButton.vue';
     flex: 1;
     display: flex;
     cursor: pointer;
+
+    .bar-hamburger {
+      transition: background 0.2s;
+    }
+    .bar-hamburger:hover {
+      background: rgba(0, 0, 0, 0.025);
+    }
   }
   .nav-bar-right {
     flex: 3;
