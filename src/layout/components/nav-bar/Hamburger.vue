@@ -1,5 +1,5 @@
 <template>
-  <div @click="toggleClick">
+  <div @click="toggleClick" class="hamburger-wrapper">
     <svg :class="{ 'is-active': isActive }" class="hamburger" viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg">
       <path
@@ -22,16 +22,19 @@ const toggleClick = () => {
 };
 </script>
 <style scoped lang='scss'>
-.hamburger {
-  display: inline-block;
-  vertical-align: middle;
-  width: 24px;
-  height: 24px;
-  padding: 0 15px;
-  transition: all 200ms;
-}
+.hamburger-wrapper {
+  display: flex;
+  align-items: center;
 
-.hamburger.is-active {
-  transform: rotate(180deg);
+  .hamburger {
+    width: 21px;
+    height: 21px;
+    padding: 0 7px;
+    transition: all 200ms;
+  }
+
+  .hamburger.is-active {
+    transform: rotate(180deg);
+  }
 }
 </style>

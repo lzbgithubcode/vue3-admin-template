@@ -15,7 +15,7 @@ import { BaseRoute } from '@/utils/constants/RoutePathConstants';
 import { useRoute, useRouter } from 'vue-router';
 import { isEmptyObject } from '@/utils/helper/ObjectHelper.js';
 import { pathToRegexp, compile } from 'path-to-regexp';
-import { ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 
 // 路由级别
 const levelList = ref(null);
@@ -34,7 +34,7 @@ const isFixedPathRoute = (route) => {
 
 // 获取面包屑
 const getBreadcrumb = () => {
-  const matched = route.matched.filter((item) => item.meta && item.meta.title);
+  let matched = route.matched.filter((item) => item.meta && item.meta.title);
   const first = matched[0];
   if (!isFixedPathRoute(first)) {
     const fixRoute = {
@@ -73,12 +73,31 @@ const handleLink = (item) => {
     router.push(redirect);
     return;
   }
+  console.log('======点击路由======', redirect, path);
   router.push(pathCompile(path));
 };
+
+// 方法调用
+onMounted(() => {
+  getBreadcrumb();
+});
+
+// 观察着
+watch(
+  () => route.path,
+  (now, pre) => {
+    // 不要将redirect页面加入到面包屑
+    if (now.startsWith('/redirect/')) {
+      return;
+    }
+    getBreadcrumb();
+  }
+);
 </script>
 <style scoped lang="scss">
 .breadcrumb-wrapper {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   font-size: 14px;
   .no-redirect {
     color: #97a8be;

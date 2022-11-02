@@ -17,7 +17,7 @@ ProgressUtil.initProgress();
 const whiteNoTokenList = [BaseRoute.LOGIN_PATH, BaseRoute.ERROR.NO_SOURCE_PATH];
 
 router.beforeEach(async (to) => {
-  console.log("路由守卫=======", to, router.getRoutes());
+  // console.log("路由守卫=======", to, router.getRoutes());
   // 开始进度条
   ProgressUtil.startProgress();
 

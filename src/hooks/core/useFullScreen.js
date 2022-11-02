@@ -7,6 +7,7 @@ export function useFullScreen() {
 
   // 触发全屏
   const toggle = () => {
+    console.log("触发全屏=========",isFullScreen)
     return ScreenFull.toggle();
   };
 

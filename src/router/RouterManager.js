@@ -70,6 +70,7 @@ export default {
             path: "menu1",
             component: () => import("@/views/nested/menu1/index.vue"), // Parent router-view
             name: "Menu1",
+            redirect: "/nested/menu1/menu1-1",
             meta: { title: "Menu1" },
             children: [
               {

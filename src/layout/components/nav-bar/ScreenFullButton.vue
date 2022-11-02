@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <i-ep-fullScreen v-if="isFullScreen" @click="toggleFullScreen" />
-    <i-ep-switch v-else />
+  <div @click="toggleFullScreen" class="full-screen-button">
+    <i-ep-switch v-if="isFullScreen" />
+    <i-ep-fullScreen v-else />
+
   </div>
 </template>
 
@@ -14,4 +15,13 @@ const { isFullScreen, toggle } = useFullScreen();
 const toggleFullScreen = () => toggle();
 </script>
 <style scoped lang='scss'>
+.full-screen-button {
+  display: flex;
+  align-items: center;
+  svg {
+    width: 21px;
+    height: 21px;
+    padding: 0 7px;
+  }
+}
 </style>
