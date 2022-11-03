@@ -11,6 +11,27 @@
     </div>
     <div class="nav-bar-right">
 
+      <el-dropdown trigger="hover">
+        <div class=" right-menu avatar-wrapper">
+          <img :src="avatar" class="user-avatar" />
+          <span class="user-name">{{userName}}</span>
+          <i-ep-ArrowDown class="user-arrow-down" />
+        </div>
+
+        <template #dropdown>
+          <el-dropdown-menu>
+            <router-link to="/">
+              <el-dropdown-item>控制台</el-dropdown-item>
+            </router-link>
+            <a target="_blank" href="https://github.com/lzbgithubcode/vue3-admin-template">
+              <el-dropdown-item>Github</el-dropdown-item>
+            </a>
+
+            <el-dropdown-item divided @click="loginOut">退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+
     </div>
   </div>
 </template>
@@ -19,6 +40,21 @@
 import Breadcrumb from './Breadcrumb.vue';
 import Hamburger from './Hamburger.vue';
 import ScreenFullButton from './ScreenFullButton.vue';
+import { useUserStore } from '../../../store/modules/user.js';
+import { logout } from '../../../utils/user/UserUtils.js';
+import { computed, isRef } from 'vue';
+
+const useUser = useUserStore();
+const userName = computed(() => {
+  return useUser.userData.userName;
+});
+const avatar = computed(() => {
+  return useUser.userData.avatar;
+});
+
+const loginOut = () => {
+  logout().then((res) => {});
+};
 </script>
 <style scoped lang='scss'>
 .nav-bar-wrapper {
@@ -46,6 +82,32 @@ import ScreenFullButton from './ScreenFullButton.vue';
   }
   .nav-bar-right {
     flex: 3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 15px;
+    .avatar-wrapper {
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        border: 1px solid $borderSeparateColor;
+        border-radius: 50%;
+        box-sizing: border-box;
+      }
+      .user-name {
+        margin-left: 10px;
+      }
+      .user-arrow-down {
+        margin-left: 5px;
+      }
+    }
+
+    .right-menu {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding-right: 15px;
+    }
   }
 }
 </style>

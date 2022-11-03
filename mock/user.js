@@ -30,7 +30,9 @@ export default [
     type: "post",
     response: () => {
       return {
-        code: 20000,
+        code: 0,
+        description: "退出成功",
+        success: true,
         data: "success",
       };
     },

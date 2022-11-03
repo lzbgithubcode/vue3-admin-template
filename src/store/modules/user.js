@@ -87,7 +87,7 @@ export const useUserStore = defineStore(key, {
         loginApi
           .logout(param)
           .then((res) => {
-            this.removeAllUserData();
+            this.resetUserStore();
             resolve && resolve(res);
           })
           .catch((error) => {
