@@ -63,7 +63,7 @@ export default {
         name: "Nested",
         meta: {
           title: "Nested",
-          icon: "eye",
+          elIcon: "ChatRound",
         },
         children: [
           {

@@ -9,7 +9,8 @@
       </Link>
     </template>
 
-    <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
+    <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)" popper-class="side-bar-popper"
+      popper-append-to-body>
       <template #title>
         <Item v-if="item.meta" :meta="item.meta" />
       </template>

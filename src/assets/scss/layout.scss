@@ -1,3 +1,4 @@
+ // 正常的菜单
 .app-layout-wrapper {
   position: relative;
   width: 100%;
@@ -85,5 +86,105 @@
     transition: margin-left 0.28s;
     margin-left: $sideBarMaxWidth;
     position: relative;
+  }
+}
+
+// 隐藏侧滑栏状态样式
+.hideSidebar{
+  // 侧滑栏
+  .layout-side-bar{
+    width: $sideBarMinWidth;
+
+    .side-bar-item{
+      box-sizing: border-box;
+      .el-menu-item, .el-sub-menu{
+        padding: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+
+      // 图标 
+      .item-svg-icon{
+        font-size: 20px;
+        margin:0px;
+      }
+  
+      // 文字
+      .item-title{
+        display: none;
+      }
+
+      // 去除箭头
+      .el-sub-menu__icon-arrow{
+        display: none;
+      }
+    }
+
+    
+  }
+
+  .layout-right-wrapper{
+    margin-left: $sideBarMinWidth;
+  }
+}
+
+
+
+
+// 手机状态样式
+.mobile{
+  .layout-side-bar{
+    width: $sideBarMaxWidth !important;
+    transition: transform 0.28s;
+  } 
+  .layout-right-wrapper{
+    margin-left: 0px;
+  }
+
+  &.hideSidebar{
+    .layout-side-bar{
+       transform: translate3d(-$sideBarMaxWidth, 0, 0);
+    }
+  }
+}
+
+// 菜单展开
+.side-bar-popper {
+    // 菜单扩展
+  .side-bar-item{
+    .el-menu-item, .el-sub-menu__title{
+      color: white;
+    }
+  }
+
+  .nest-menu .el-submenu > .el-submenu__title,
+  .el-menu-item {
+    display: flex;
+    align-items: center;
+      &:hover {
+          // 也可以使用$subMenuHover
+          background-color: $menuHover !important;
+      }
+  }
+
+  // 子菜单过长显示滚动条
+  > .el-menu--popup {
+      max-height: 100vh;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar-track-piece {
+          background: #d3dce6;
+      }
+
+      &::-webkit-scrollbar {
+          width: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+          background: #99a9bf;
+          border-radius: 20px;
+      }
   }
 }

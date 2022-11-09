@@ -18,6 +18,7 @@ const isActive = ref(useApp.sidebar.opened);
 // 定义方法
 const toggleClick = () => {
   isActive.value = !isActive.value;
+  useApp.toggleSideBar(true);
   console.log('===========', isActive.value);
 };
 </script>

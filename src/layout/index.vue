@@ -1,5 +1,5 @@
 <template>
-  <div class="app-layout-wrapper">
+  <div class="app-layout-wrapper" :class="classObj">
     <!-- 左侧菜单 -->
     <SideBar class="layout-side-bar"></SideBar>
 
@@ -18,9 +18,18 @@
 import { computed } from 'vue';
 import { AppMain, NavBar, Footer, SideBar } from './components/index.js';
 import { useAppStore } from '@/store/modules/app.js';
+import { useResizeDevice } from '../hooks/core/useResizeDevice.js';
 
-const appStore = useAppStore();
-const fixedHeader = computed(() => appStore.settings.fixedHeader);
+useResizeDevice();
+const useApp = useAppStore();
+const fixedHeader = computed(() => useApp.settings.fixedHeader);
+const classObj = computed(() => {
+  return {
+    hideSidebar: !useApp.sidebar.opened,
+    openSidebar: useApp.sidebar.opened,
+    mobile: useApp.device === 'mobile',
+  };
+});
 </script>
 
 

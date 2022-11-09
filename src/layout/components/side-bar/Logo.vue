@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar-log-container">
+  <div class="sidebar-log-container" :class="{collapse: collapse}">
     <transition name="logoFade">
       <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
         <img v-if="state.logo" :src="state.logo" class="sidebar-logo" />
@@ -72,13 +72,13 @@ const state = reactive({
   }
 
   // // 过渡动画
-  // .logoFade-enter-active {
-  //   transition: opacity 1.5s;
-  // }
+  .logoFade-enter-active {
+    transition: opacity 1.5s;
+  }
 
-  // .logoFade-enter,
-  // .logoFade-leave-to {
-  //   opacity: 0;
-  // }
+  .logoFade-enter,
+  .logoFade-leave-to {
+    opacity: 0;
+  }
 }
 </style>

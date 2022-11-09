@@ -7,7 +7,6 @@ export const useAppStore = defineStore(key, {
     return {
       sidebar: {
         opened: true,
-        withoutAnimation: false,
       },
       device: "pc",
       settings: defaultSettings,
@@ -22,18 +21,22 @@ export const useAppStore = defineStore(key, {
       });
     },
     // 触发侧滑栏
-    toggleSideBar(withoutAnimation) {
+    toggleSideBar() {
       this.$patch((state) => {
         state.sidebar.opened = !state.sidebar.opened;
-        state.sidebar.withoutAnimation = withoutAnimation;
+      });
+    },
+    // 触发设备
+    toggleDevice(device) {
+      this.$patch((state) => {
+        state.device = device;
       });
     },
 
     // 关闭侧滑栏
-    closeSideBar(withoutAnimation) {
+    closeSideBar() {
       this.$patch((state) => {
         state.sidebar.opened = false;
-        state.sidebar.withoutAnimation = withoutAnimation;
       });
     },
   },
