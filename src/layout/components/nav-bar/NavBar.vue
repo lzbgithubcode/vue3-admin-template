@@ -67,6 +67,7 @@ const loginOut = () => {
   height: $navigatorOperationBarHeight;
   line-height: $navigatorOperationBarHeight;
   border-bottom: 1px solid $borderSeparateColor;
+  background: white;
   .nav-bar-left {
     flex: 1;
     display: flex;

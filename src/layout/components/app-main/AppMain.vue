@@ -1,9 +1,6 @@
 <template>
   <section class="app-main">
 
-    <!-- <keep-alive :include="cachedViews">
-        <router-view :key="key" />
-      </keep-alive> -->
     <router-view v-slot="{ Component }" :key="key">
       <transition name="fade-transform" mode="out-in">
         <keep-alive :include="cachedViews">
@@ -27,4 +24,14 @@ const cachedViews = computed(() => useTagsView.cachedViews);
 const key = computed(() => route.path);
 </script>
 <style scoped lang='scss'>
+.app-main {
+  overflow: hidden;
+  position: relative;
+  min-height: calc(100vh - #{$navigatorOperationBarHeight});
+  box-sizing: border-box;
+  padding: 15px;
+}
+.fixed-header + .app-main {
+  margin-top: $navigatorOperationBarHeight;
+}
 </style>

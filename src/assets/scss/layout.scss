@@ -1,16 +1,13 @@
  // 正常的菜单
 .app-layout-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
 
   // 背景面板
   .mobile-open-side-bar-bg{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -103,6 +100,16 @@
     transition: margin-left 0.28s;
     margin-left: $sideBarMaxWidth;
     position: relative;
+
+    // 固定头部
+    .fixed-header{
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 9;
+      width: calc(100% - #{$sideBarMaxWidth});
+      transition: width 0.28s;
+    }
   }
 }
 
@@ -144,6 +151,15 @@
 
   .layout-right-wrapper{
     margin-left: $sideBarMinWidth;
+    // 固定头部
+    .fixed-header{
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 9;
+      width: calc(100% - #{$sideBarMinWidth});
+      transition: width 0.28s;
+    }
   }
 }
 
@@ -158,6 +174,15 @@
   } 
   .layout-right-wrapper{
     margin-left: 0px;
+    // 固定头部
+    .fixed-header{
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 9;
+      width: 100%;
+      transition: width 0.28s;
+    }
   }
 
   &.hideSidebar{

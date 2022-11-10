@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import defaultSettings from "@/settings.js";
+console.log("默认的设置=======", defaultSettings);
 
 const key = "app";
 export const useAppStore = defineStore(key, {
