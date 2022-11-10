@@ -21,12 +21,14 @@ import SideBarItem from './SideBarItem.vue';
 import variablesObj from '@/assets/scss/extend-to-js.scss';
 import { useAppStore } from '@/store/modules/app.js';
 import { usePermissionStore } from '@/store/modules/permission.js';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { ExternalLinkRouterWhiteList } from '@/utils/constants/EnumConstants';
+import { isExternalURL } from '../../../utils/helper/ValidateHelper';
 
 const appStore = useAppStore();
 const permissionStore = usePermissionStore();
 const route = useRoute();
+const router = useRouter();
 
 const settings = computed(() => appStore.settings);
 
@@ -50,9 +52,13 @@ const activeMenu = computed(() => {
  * 菜单选择
  */
 const selectedMenu = (path) => {
+  if (isExternalURL(path)) {
+    return false;
+  }
+
   const constantsList = ExternalLinkRouterWhiteList;
   if (constantsList.indexOf(path) !== -1) {
-    const routeUrl = this.$router.resolve({
+    const routeUrl = router.resolve({
       path,
     });
     window.open(routeUrl.href, '_blank');

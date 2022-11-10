@@ -18,7 +18,7 @@ const props = defineProps({
 
 // 定义计算属性
 const type = computed(() => {
-  if (isExternalURL(props.to.value)) {
+  if (isExternalURL(props.to)) {
     return 'a';
   }
   return 'router-link';
@@ -26,7 +26,7 @@ const type = computed(() => {
 
 // 定义方法
 const linkProps = (url) => {
-  if (isExternalURL(props.to.value)) {
+  if (isExternalURL(props.to)) {
     return {
       href: url,
       target: '_blank',

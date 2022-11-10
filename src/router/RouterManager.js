@@ -122,6 +122,10 @@ export default {
             name: "Menu2",
             meta: { title: "menu2" },
           },
+          {
+            path: "https://baidu.com",
+            meta: { title: "百度", elIcon: "Position" },
+          },
         ],
       },
     ];
