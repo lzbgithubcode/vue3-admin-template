@@ -24,7 +24,6 @@ export const useResizeDevice = () => {
   };
 
   // 生命周期
-
   onBeforeMount(() => {
     window && window.addEventListener("resize", resizeHandler);
   });

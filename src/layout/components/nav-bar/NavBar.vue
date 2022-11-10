@@ -4,9 +4,9 @@
       <!-- 折叠按钮 -->
       <Hamburger class="bar-hamburger hover-bg" />
       <!--全屏 -->
-      <ScreenFullButton class="bar-full-screen hover-bg" />
+      <ScreenFullButton class="bar-full-screen hover-bg" v-if="!isMobile" />
       <!-- 面包屑 -->
-      <Breadcrumb class="bar-breadcrumb" />
+      <Breadcrumb class="bar-breadcrumb" v-if="!isMobile" />
 
     </div>
     <div class="nav-bar-right">
@@ -41,16 +41,20 @@ import Breadcrumb from './Breadcrumb.vue';
 import Hamburger from './Hamburger.vue';
 import ScreenFullButton from './ScreenFullButton.vue';
 import { useUserStore } from '../../../store/modules/user.js';
+import { useAppStore } from '../../../store/modules/app.js';
 import { logout } from '../../../utils/user/UserUtils.js';
 import { computed, isRef } from 'vue';
 
 const useUser = useUserStore();
+const useApp = useAppStore();
 const userName = computed(() => {
   return useUser.userData.userName;
 });
 const avatar = computed(() => {
   return useUser.userData.avatar;
 });
+
+const isMobile = computed(() => useApp.device == 'mobile');
 
 const loginOut = () => {
   logout().then((res) => {});

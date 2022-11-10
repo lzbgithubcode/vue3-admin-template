@@ -1,6 +1,5 @@
 import { useUserStore } from "../../store/modules/user";
-import { usePermissionStore } from "../../store/modules/permission";
-import { useRouter } from "vue-router";
+import router from "../../router/index.js";
 
 /**
  * 登录
@@ -54,6 +53,6 @@ function handleLoginSuccessData(res) {
  */
 function handleLogOutSuccessData(res) {
   console.log("退出登录-------");
-  const router = useRouter();
+
   router.push(`/login?redirect=/`);
 }

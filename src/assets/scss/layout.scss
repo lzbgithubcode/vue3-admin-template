@@ -1,8 +1,25 @@
  // 正常的菜单
 .app-layout-wrapper {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+
+  // 背景面板
+  .mobile-open-side-bar-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.3;
+    z-index: 900;
+    transition: opacity 0.5s;
+  }
 
   // 左侧侧滑
   .layout-side-bar {
