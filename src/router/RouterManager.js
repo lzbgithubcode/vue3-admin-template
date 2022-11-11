@@ -2,8 +2,9 @@ import Layout from "@/layout/index.vue";
 import { BaseRoute } from "../utils/constants/RoutePathConstants";
 export default {
   /**
-   * 获取静态路由
-   */
+   * @description:  获取静态路由
+   * @return {*} 路由数组
+   */ 
   getStaticRoutes() {
     return [
       {
@@ -39,8 +40,9 @@ export default {
     ];
   },
   /**
-   * 获取动态路由
-   */
+   * @description:  获取动态路由
+   * @return {*} 路由数组
+   */  
   getAsyncRoutes() {
     return [
       {
