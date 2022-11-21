@@ -2,13 +2,12 @@ module.exports = {
   root: true,
   env: {
     node: true,
-    browser: true,
+    browser: true,  // 使用浏览器的全局变量
     es6: true,
   },
   extends: [
     "eslint:recommended",
     "plugin:vue/vue3-recommended",
-    "plugin:eslint-plugin-prettier",
   ],
   parser: "@babel/eslint-parser",
   parserOptions: {
@@ -25,8 +24,8 @@ module.exports = {
     "import/extensions": "off",
     "import/no-extraneous-dependencies": [2, { devDependencies: true }],
     "import/no-unresolved": [2, { ignore: ["^@"] }],
-    "no-console": import.meta.env === "production" ? "error" : "off",
-    "no-debugger": import.meta.env === "production" ? "error" : "off",
+    // "no-console": import.meta.env === "production" ? "error" : "off",
+    // "no-debugger": import.meta.env === "production" ? "error" : "off",
     "prettier/prettier": [
       "error",
       {
@@ -66,7 +65,7 @@ module.exports = {
     // 禁止出现未使用过的变量
     "no-unused-vars": ["warn", { vars: "local" }],
     "default-case": "off", // 要求 switch 语句中有 default 分支
-    eqeqeq: "off", // 要求使用 === 和 !==
+    // eqeqeq: "on", // 要求使用 === 和 !==
     "no-lonely-if": "warn", // 禁止 if 作为唯一的语句出现在 else 语句中
     radix: "warn", //  强制在 parseInt() 使用基数参数
     "array-callback-return": "warn", // 强制数组方法的回调函数中有 return 语句

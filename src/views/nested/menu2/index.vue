@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>我是菜单menu2</div>
-    <el-table :data="dataList">
+    <el-table :data="dataList" ref="table">
       <el-table-column prop="id"></el-table-column>
       <el-table-column prop="name"></el-table-column>
       <el-table-column prop="age"></el-table-column>
@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const dataList = ref([]);
 for (let i = 0; i < 100; i++) {
@@ -25,5 +25,4 @@ for (let i = 0; i < 100; i++) {
   });
 }
 </script>
-<style scoped lang='scss'>
-</style>
+<style scoped lang="scss"></style>
