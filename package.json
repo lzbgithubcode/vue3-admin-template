@@ -13,7 +13,9 @@
     "test2-build": "vue-cli-service build --mode test2",
     "pre-build": "vue-cli-service build --mode preprod",
     "sim-build": "vue-cli-service build --mode sim",
-    "prod-build": "vue-cli-service build --mode production"
+    "prod-build": "vue-cli-service build --mode production",
+    "lint": "eslint . --ext .vue,.js --fix",
+    "format": "prettier --write \"./**/*.{html,vue,js,json}\""
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
@@ -37,7 +39,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
-    "@babel/eslint-parser": "^7.19.1",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.20.2",
     "@babel/register": "^7.18.9",
@@ -49,10 +50,11 @@
     "chalk": "^4.0.0",
     "chokidar": "^3.4.0",
     "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-vue": "^7.0.0",
     "mockjs": "^1.1.0",
-    "prettier": "^2.2.1",
+    "prettier": "^2.7.1",
     "require-context": "^1.1.0",
     "rollup": "^2.79.1",
     "sass": "^1.54.0",

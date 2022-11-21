@@ -3,9 +3,9 @@
  * @Date: 2022-06-30 21:58:02
  */
 
-import Cookies from "js-cookie";
+import Cookies from 'js-cookie'
 
-const TokenKey = "template-Token";
+const TokenKey = 'template-Token'
 
 export default {
   /**
@@ -13,8 +13,8 @@ export default {
    */
   setToken(token) {
     if (token) {
-      localStorage.setItem(TokenKey, token);
-      Cookies.set(TokenKey, token);
+      localStorage.setItem(TokenKey, token)
+      Cookies.set(TokenKey, token)
     }
   },
 
@@ -22,18 +22,18 @@ export default {
    * 获取token
    */
   getToken() {
-    let token = Cookies.get(TokenKey);
+    let token = Cookies.get(TokenKey)
     if (!token) {
-      token = localStorage.getItem(TokenKey);
+      token = localStorage.getItem(TokenKey)
     }
-    return token;
+    return token
   },
 
   /**
    * 移除token
    */
   removeToken() {
-    localStorage.removeItem(TokenKey);
-    Cookies.remove(TokenKey);
-  },
-};
+    localStorage.removeItem(TokenKey)
+    Cookies.remove(TokenKey)
+  }
+}

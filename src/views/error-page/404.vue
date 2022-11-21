@@ -9,8 +9,7 @@
   </div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 .p-404-wrapper {

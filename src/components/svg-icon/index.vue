@@ -5,36 +5,36 @@
   </svg>
 </template>
 <script setup>
-import { computed } from 'vue';
-import { isExternalURL } from '../../utils/helper/ValidateHelper';
+import { computed } from 'vue'
+import { isExternalURL } from '../../utils/helper/ValidateHelper'
 
 // 定义属性
 const props = defineProps({
   iconClass: {
     type: String,
-    required: true,
+    required: true
   },
   className: {
     type: String,
-    default: '',
-  },
-});
+    default: ''
+  }
+})
 
 // 定义计算属性
-const isExternal = computed(() => isExternalURL(props.iconClass));
+const isExternal = computed(() => isExternalURL(props.iconClass))
 const styleExternalIcon = computed(() => {
   return {
     mask: `url(${props.iconClass}) no-repeat 50% 50%`,
-    '-webkit-mask': `url(${props.iconClass}) no-repeat 50% 50%`,
-  };
-});
+    '-webkit-mask': `url(${props.iconClass}) no-repeat 50% 50%`
+  }
+})
 const svgClass = computed(() => {
   if (props.className) {
-    return `svg-icon ${props.className}`;
+    return `svg-icon ${props.className}`
   }
-  return 'svg-icon';
-});
-const iconName = computed(() => `#icon-${props.iconClass}`);
+  return 'svg-icon'
+})
+const iconName = computed(() => `#icon-${props.iconClass}`)
 </script>
 
 <style scoped lang="scss">
@@ -52,4 +52,3 @@ const iconName = computed(() => `#icon-${props.iconClass}`);
   display: inline-block;
 }
 </style>
-

@@ -4,17 +4,15 @@
       <!-- 折叠按钮 -->
       <Hamburger class="bar-hamburger hover-bg" />
       <!--全屏 -->
-      <ScreenFullButton class="bar-full-screen hover-bg" v-if="!isMobile" />
+      <ScreenFullButton v-if="!isMobile" class="bar-full-screen hover-bg" />
       <!-- 面包屑 -->
-      <Breadcrumb class="bar-breadcrumb" v-if="!isMobile" />
-
+      <Breadcrumb v-if="!isMobile" class="bar-breadcrumb" />
     </div>
     <div class="nav-bar-right">
-
       <el-dropdown trigger="hover">
-        <div class=" right-menu avatar-wrapper">
+        <div class="right-menu avatar-wrapper">
           <img :src="avatar" class="user-avatar" />
-          <span class="user-name">{{userName}}</span>
+          <span class="user-name">{{ userName }}</span>
           <i-ep-ArrowDown class="user-arrow-down" />
         </div>
 
@@ -27,40 +25,39 @@
               <el-dropdown-item>Github</el-dropdown-item>
             </a>
 
-            <el-dropdown-item divided @click="loginOut">退出</el-dropdown-item>
+            <el-dropdown-item divided @click="loginOut"> 退出 </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-
     </div>
   </div>
 </template>
 
 <script setup>
-import Breadcrumb from './Breadcrumb.vue';
-import Hamburger from './Hamburger.vue';
-import ScreenFullButton from './ScreenFullButton.vue';
-import { useUserStore } from '../../../store/modules/user.js';
-import { useAppStore } from '../../../store/modules/app.js';
-import { logout } from '../../../utils/user/UserUtils.js';
-import { computed, isRef } from 'vue';
+import Breadcrumb from './Breadcrumb.vue'
+import Hamburger from './Hamburger.vue'
+import ScreenFullButton from './ScreenFullButton.vue'
+import { useUserStore } from '../../../store/modules/user.js'
+import { useAppStore } from '../../../store/modules/app.js'
+import { logout } from '../../../utils/user/UserUtils.js'
+import { computed, isRef } from 'vue'
 
-const useUser = useUserStore();
-const useApp = useAppStore();
+const useUser = useUserStore()
+const useApp = useAppStore()
 const userName = computed(() => {
-  return useUser.userData.userName;
-});
+  return useUser.userData.userName
+})
 const avatar = computed(() => {
-  return useUser.userData.avatar;
-});
+  return useUser.userData.avatar
+})
 
-const isMobile = computed(() => useApp.device == 'mobile');
+const isMobile = computed(() => useApp.device == 'mobile')
 
 const loginOut = () => {
-  logout().then((res) => {});
-};
+  logout().then((res) => {})
+}
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .nav-bar-wrapper {
   display: flex;
   align-items: center;

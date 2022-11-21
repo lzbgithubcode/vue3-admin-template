@@ -5,24 +5,24 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { isExternalURL } from '@/utils/helper/ValidateHelper';
+import { computed } from 'vue'
+import { isExternalURL } from '@/utils/helper/ValidateHelper'
 
 // 定义属性
 const props = defineProps({
   to: {
     type: String,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 
 // 定义计算属性
 const type = computed(() => {
   if (isExternalURL(props.to)) {
-    return 'a';
+    return 'a'
   }
-  return 'router-link';
-});
+  return 'router-link'
+})
 
 // 定义方法
 const linkProps = (url) => {
@@ -30,14 +30,13 @@ const linkProps = (url) => {
     return {
       href: url,
       target: '_blank',
-      rel: 'noopener',
-    };
+      rel: 'noopener'
+    }
   } else {
     return {
-      to: url,
-    };
+      to: url
+    }
   }
-};
+}
 </script>
-<style scoped lang='scss'>
-</style>
+<style scoped lang="scss"></style>

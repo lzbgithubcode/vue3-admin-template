@@ -1,10 +1,10 @@
 export function isEmptyObject(data) {
   if (!data) {
-    return true;
+    return true
   }
-  const arr = Object.keys(data);
+  const arr = Object.keys(data)
   if (arr.length === 0) {
-    return true;
+    return true
   }
-  return false;
+  return false
 }

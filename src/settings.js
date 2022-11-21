@@ -2,7 +2,7 @@ export default {
   /**
    * 标题
    */
-  title: "vue3-template",
+  title: 'vue3-template',
   /**
    * 是否打开mock服务
    */
@@ -41,5 +41,5 @@ export default {
    * @type {boolean} true | false
    * @description 是否固定顶部
    */
-  fixedHeader: true,
-};
+  fixedHeader: true
+}

@@ -1,20 +1,19 @@
 <template>
-  <div @click="toggleFullScreen" class="full-screen-button">
+  <div class="full-screen-button" @click="toggleFullScreen">
     <i-ep-switch v-if="isFullScreen" />
     <i-ep-fullScreen v-else />
-
   </div>
 </template>
 
 <script setup>
-import { useFullScreen } from '../../../hooks/core/useFullScreen.js';
+import { useFullScreen } from '../../../hooks/core/useFullScreen.js'
 
-const { isFullScreen, toggle } = useFullScreen();
+const { isFullScreen, toggle } = useFullScreen()
 
 // 定义方法
-const toggleFullScreen = () => toggle();
+const toggleFullScreen = () => toggle()
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .full-screen-button {
   display: flex;
   align-items: center;

@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar-log-container" :class="{collapse: collapse}">
+  <div class="sidebar-log-container" :class="{ collapse: collapse }">
     <transition name="logoFade">
       <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
         <img v-if="state.logo" :src="state.logo" class="sidebar-logo" />
@@ -8,30 +8,29 @@
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
         <img v-if="state.logo" :src="state.logo" class="sidebar-logo" />
         <span class="sidebar-title">{{ state.title }}</span>
-
       </router-link>
     </transition>
   </div>
 </template>
 
 <script setup>
-import settings from '@/settings.js';
-import { reactive } from 'vue';
+import settings from '@/settings.js'
+import { reactive } from 'vue'
 
 // 定义属性
 defineProps({
   collapse: {
     type: Boolean,
-    default: false,
-  },
-});
+    default: false
+  }
+})
 
 const state = reactive({
   title: settings.title,
-  logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png',
-});
+  logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
+})
 </script>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .sidebar-log-container {
   position: relative;
   width: 100%;
