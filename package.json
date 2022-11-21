@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@6.32.3",
+  "packageManager": "pnpm@7.1.1",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "vite  dev",

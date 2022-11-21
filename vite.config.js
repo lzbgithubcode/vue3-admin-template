@@ -26,7 +26,7 @@ function resolve(dir) {
   return join(__dirname, dir);
 }
 export default defineConfig(({ command, mode }) => {
-  // console.log("=====env=====", mode, command, resolve("src/assets/svg-icons"));
+  console.log("=====env=====", mode, command);
 
   const pluginList = [
     vue({
@@ -101,7 +101,7 @@ export default defineConfig(({ command, mode }) => {
   pluginList.push(
     viteMockServe({
       supportTs: false,
-      mockPath: "./mock",
+      mockPath: "mock",
       localEnabled: command === "serve",
       injectCode: `
       import { setupProdMockServer } from './src/mockProdServer';
