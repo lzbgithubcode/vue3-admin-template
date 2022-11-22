@@ -166,7 +166,7 @@ pnpm add eslint-config-prettier eslint-plugin-prettier -wD
 
 ```
 
-#### 三、安装 Stylelint （样式统一/样式检测）
+#### 四、安装 Stylelint （样式统一/样式检测）
 
 ##### 1. 项目配置 Stylelint
 
@@ -368,3 +368,32 @@ vscode 工具[Stylelint](https://marketplace.visualstudio.com/items?itemName=sty
 
 
 ```
+
+#### 五、自动化代码校验（代码质量+代码风格）
+
+##### 1. 项目中使用 commitlint+husky+lint-staged
+
+1. 安装插件
+
+使用插件
+
+- [commitlint](https://github.com/conventional-changelog/commitlint) - 校验 commit 的消息
+- [husky](https://www.npmjs.com/package/husky) -git hook 的管理工具，在提交代码的时候会触发 husky
+- [lint-staged](https://github.com/okonet/lint-staged) husky 的辅助工具，对暂存的 git 文件运行 lint
+
+```
+pnpm add @commitlint/config-conventional @commitlint/cli -wD
+
+pnpm add husky -wD
+
+pnpm add lint-staged -wD
+
+```
+
+2. 根目录创建`.commitlintrc.js` 配置 commit 的规则
+
+```
+touch .commitlintrc.js
+```
+
+##### 2.vscode 配置 commitlint
