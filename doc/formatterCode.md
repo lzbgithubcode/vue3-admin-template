@@ -222,15 +222,7 @@ module.exports = {
   // 引入排序插件
   plugins: ['stylelint-order'],
   // 忽略文件
-  ignoreFiles: [
-    '**/*.js',
-    '**/*.jsx',
-    '**/*.tsx',
-    '**/*.ts',
-    '**/*.json',
-    '**/*.md',
-    '**/*.yaml'
-  ],
+  ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts', '**/*.json', '**/*.md', '**/*.yaml'],
   rules: {
     // 禁止在具有较高优先级的选择器后出现被其覆盖的较低优先级的选择器
     'no-descending-specificity': null,
@@ -422,7 +414,7 @@ module.exports = {
         'test'
       ]
     ],
-    'type-case': [0], // 0 表示 disables  1 表示 warning  2 表示 error
+    'type-case': [0], // 0 表示 disables  1 表示 warning  2 表示 error, 且最少配置[2或者3位length]
     'type-empty': [0],
     'scope-empty': [0],
     'scope-case': [0],

@@ -19,7 +19,7 @@ module.exports = {
         'test'
       ]
     ],
-    'type-empty': [1, 'never'],
+    'type-empty': [2, 'never'],
     'scope-empty': [0, 'never'],
     'subject-empty': [0]
   }
