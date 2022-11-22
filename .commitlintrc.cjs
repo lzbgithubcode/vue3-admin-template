@@ -20,9 +20,6 @@ module.exports = {
         'test'
       ]
     ],
-    'type-empty': [2, 'always', 2],
-    'scope-empty': [2, 'always', 2],
-    'subject-empty': [0],
-    'header-max-length': [0, 'always', 72]
+    'subject-empty': [0]
   }
 }
