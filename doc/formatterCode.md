@@ -396,4 +396,90 @@ pnpm add lint-staged -wD
 touch .commitlintrc.js
 ```
 
+配置`.commitlintrc.js`, 具体规则配置可以参考[@commitlint/config-conventional 配置](https://github.com/conventional-changelog/commitlint/blob/master/docs/reference-rules.md)
+
+```javascript
+// `.commitlintrc.js
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  prompt: {
+    types: [
+      { value: 'feat', name: 'feat:     新增功能' },
+      { value: 'fix', name: 'fix:      修复缺陷' },
+      { value: 'docs', name: 'docs:     文档变更' },
+      { value: 'style', name: 'style:    代码格式' },
+      { value: 'refactor', name: 'refactor: 代码重构' },
+      { value: 'perf', name: 'perf:     性能优化' },
+      { value: 'test', name: 'test:     添加疏漏测试或已有测试改动' },
+      {
+        value: 'build',
+        name: 'build:    构建流程、外部依赖变更 (如升级 npm 包、修改打包配置等)'
+      },
+      { value: 'ci', name: 'ci:       修改 CI 配置、脚本' },
+      { value: 'revert', name: 'revert:   回滚 commit' },
+      {
+        value: 'chore',
+        name: 'chore:    对构建过程或辅助工具和库的更改 (不影响源文件、测试用例)'
+      },
+      { value: 'wip', name: 'wip:      正在开发中' },
+      { value: 'workflow', name: 'workflow: 工作流程改进' },
+      { value: 'types', name: 'types:    类型定义文件修改' }
+    ]
+  }
+}
+```
+
+3. 在`package.json`中配置 husky 的初始化
+
+在 package.json 的 script 的钩子指令`prepare`中配置
+
+```json
+{
+  "script": {
+    "prepare": "husky install"
+  }
+}
+```
+
+执行`pnpm prepare`将会在根目录中生成`.husky`初始化文件夹该目录下有一个 \_ 目录
+
+4. 添加`commit-msg hook`对 commit 指令的注释校验
+
+执行本地命令在本地`.husky`文件夹下面创建`commit-msg `文件，文件内容是`npx --no -- commitlint --edit "$1`, 对 commit 的注释进行校验
+
+```
+ npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+```
+
+`commit-msg`文件内容
+
+```sh
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx --no -- commitlint --edit "$1"
+
+```
+
+5. 添加 pre-commit hook 来自动化校验代码质量和代码规范
+
+pre-commit 文件中可以配置在`git commit前`需要执行的操作
+
+```
+npx husky add .husky/pre-commit "pnpm run lint-staged"
+```
+
+执行命令后将在目录`.husky`文件夹下面创建`pre-commit`文件, 表示在
+`git commit 前`执行一下 `pnpm run lint-staged`指令，对所有代码进行`eslint 校验` 和 `stylelint 校验` 、`prettier`代码风格统一 ，不符合校验规则就终止 commit。`
+
+6. 在项目根目录创建` touch .lintstagedrc.cjs`,并配置
+
+```js
+//  .lintstagedrc.cjs
+module.exports = {
+  'src/**/*.{js,ts,tsx,vue}': 'pnpm run format && pnpm run lint',
+  'src/**/*.{vue,css,scss}': 'pnpm run format && pnpm run style'
+}
+```
+
 ##### 2.vscode 配置 commitlint

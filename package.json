@@ -5,7 +5,6 @@
   "type": "module",
   "packageManager": "pnpm@7.1.1",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "dev": "vite  dev",
     "build": "vite build",
     "build-dev": "vue-cli-service build --mode development",
@@ -14,13 +13,16 @@
     "pre-build": "vue-cli-service build --mode preprod",
     "sim-build": "vue-cli-service build --mode sim",
     "prod-build": "vue-cli-service build --mode production",
-    "eslint": "eslint . --ext .vue,.js",
-    "eslint:fix": "eslint . --ext .vue,.js --fix",
-    "style": "stylelint \"./**/*.{css,scss,sass,vue,html}\"",
-    "style:fix": "stylelint \"./**/*.{css,scss,sass,vue,html}\" --fix",
+    "eslint": "eslint . --ext .vue,.js ./src",
+    "eslint:fix": "eslint . --ext .vue,.js --fix ./src",
+    "style": "stylelint \"./**/*.{css,scss,sass,vue,html}\" ./src",
+    "style:fix": "stylelint \"./**/*.{css,scss,sass,vue,html}\" --fix ./src",
     "lint": "pnpm run eslint && pnpm run style",
     "lint:fix": "pnpm run eslint:fix && pnpm run style:fix",
-    "format": "prettier --write \"./**/*.{html,vue,js,json}\""
+    "format": "prettier --write \"./**/*.{html,vue,js,json}\"",
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
@@ -85,5 +87,20 @@
     "vite-plugin-node-polyfills": "^0.4.0",
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-template-compiler": "^2.7.8"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.{scss,html}": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
   }
 }

@@ -18,10 +18,7 @@ module.exports = {
       {
         value: 'chore',
         name: 'chore:    对构建过程或辅助工具和库的更改 (不影响源文件、测试用例)'
-      },
-      { value: 'wip', name: 'wip:      正在开发中' },
-      { value: 'workflow', name: 'workflow: 工作流程改进' },
-      { value: 'types', name: 'types:    类型定义文件修改' }
+      }
     ]
   }
 }
