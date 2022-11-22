@@ -19,8 +19,8 @@ module.exports = {
         'test'
       ]
     ],
-    'type-empty': [1],
-    'scope-empty': [1],
+    'type-empty': [2, 'always', 'type no  empty'],
+    'scope-empty': [2, 'always', 'scope no  empty'],
     'subject-empty': [0],
     'header-max-length': [0, 'always', 72]
   }
