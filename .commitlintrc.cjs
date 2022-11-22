@@ -1,4 +1,3 @@
-console.log('====commitlint===')
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
@@ -20,6 +19,8 @@ module.exports = {
         'test'
       ]
     ],
+    'type-empty': [1],
+    'scope-empty': [0],
     'subject-empty': [0]
   }
 }
