@@ -42,13 +42,13 @@ const iconName = computed(() => `#icon-${props.iconClass}`)
   width: 1em;
   height: 1em;
   vertical-align: -0.15em;
-  fill: currentColor;
+  fill: currentcolor;
   overflow: hidden;
 }
 
 .svg-external-icon {
-  background-color: currentColor;
-  mask-size: cover !important;
   display: inline-block;
+  background-color: currentcolor;
+  mask-size: cover !important;
 }
 </style>

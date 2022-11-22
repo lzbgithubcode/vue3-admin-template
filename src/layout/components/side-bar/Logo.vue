@@ -1,7 +1,12 @@
 <template>
   <div class="sidebar-log-container" :class="{ collapse: collapse }">
     <transition name="logoFade">
-      <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
+      <router-link
+        v-if="collapse"
+        key="collapse"
+        class="sidebar-logo-link"
+        to="/"
+      >
         <img v-if="state.logo" :src="state.logo" class="sidebar-logo" />
         <span v-else class="sidebar-title">{{ state.title }}</span>
       </router-link>
@@ -35,15 +40,15 @@ const state = reactive({
   position: relative;
   width: 100%;
   height: $navigatorLogoBarHeight;
-  line-height: $navigatorLogoBarHeight;
-  text-align: center;
-  overflow: hidden;
-  background: #2b2f3a;
   font-size: 14px;
+  text-align: center;
+  background: #2b2f3a;
+  overflow: hidden;
+  line-height: $navigatorLogoBarHeight;
 
   .sidebar-logo-link {
-    height: 100%;
     width: 100%;
+    height: 100%;
     background: #29384a;
 
     .sidebar-logo {
@@ -55,18 +60,18 @@ const state = reactive({
 
     .sidebar-title {
       display: inline-block;
+      flex: 1;
       margin: 0;
       color: #fff;
       font-weight: 600;
       vertical-align: middle;
-      flex: 1;
     }
   }
 
   // 缩小的时候
   &.collapse {
     .sidebar-logo {
-      margin-right: 0px;
+      margin-right: 0;
     }
   }
 

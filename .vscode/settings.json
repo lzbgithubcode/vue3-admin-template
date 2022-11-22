@@ -2,6 +2,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
     "source.fixAll.eslint": true,
+    // 新增stylelint 保存时候
     "source.fixAll.stylelint": true
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "vue"],
@@ -12,5 +13,6 @@
   // 默认格式化工具选择prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
-  "stylelint.validate": ["css", "scss", "sass", "vue", "postcss"]
+  // stylelint校验的文件格式
+  "stylelint.validate": ["css", "scss", "sass", "html", "vue"]
 }

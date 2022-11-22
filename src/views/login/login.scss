@@ -1,42 +1,44 @@
-.p-login-wrapper{
+.p-login-wrapper {
   // position:relative;
   // .m-login-wrapper{
   //   background-color: rebeccapurple;
   // }
 
-   position: relative;
-  .login-container{
+  position: relative;
+
+  .login-container {
     position: absolute;
     top: 300px;
     left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
     padding: 20px;
+    background-color: white;
     border-radius: 20px;
+    transform: translateX(-50%);
     box-sizing: border-box;
-    .login-form{
+
+    .login-form {
       margin-top: 20px;
 
-      .el-form-item .el-form-item__content{
+      .el-form-item .el-form-item__content {
         display: flex;
         flex-wrap: nowrap;
 
-        .el-input{
+        .el-input {
           width: 200px;
           margin-left: 10px;
         }
-        .el-button{
+
+        .el-button {
           width: 100%;
         }
       }
 
       // 协议
-      .protocol-group{
+      .protocol-group {
         margin-top: 20px;
         font-size: 12px;
-        color: #666666;
+        color: #666;
       }
     }
   }
-  
 }

@@ -17,6 +17,7 @@ const toggleFullScreen = () => toggle()
 .full-screen-button {
   display: flex;
   align-items: center;
+
   svg {
     width: 21px;
     height: 21px;

@@ -8,5 +8,5 @@
 
 <script src="./home.js"></script>
 <style lang="scss" scoped>
-@import './home.scss';
+@import url('./home');
 </style>

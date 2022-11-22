@@ -24,11 +24,11 @@ const key = computed(() => route.path)
 </script>
 <style scoped lang="scss">
 .app-main {
-  overflow: hidden;
   position: relative;
   min-height: calc(100vh - #{$navigatorOperationBarHeight});
-  box-sizing: border-box;
   padding: 15px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .fixed-header+.app-main {

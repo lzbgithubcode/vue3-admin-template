@@ -2,7 +2,10 @@
   <el-breadcrumb class="breadcrumb-wrapper" separator="/">
     <transition-group name="breadcrumb">
       <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
-        <span v-if="item.redirect === 'noRedirect' || index == levelList.length - 1" class="no-redirect">
+        <span
+          v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
+          class="no-redirect"
+        >
           {{ item.meta.title }}
         </span>
         <a v-else @click.prevent="handleLink(item)">
@@ -48,12 +51,18 @@ const getBreadcrumb = () => {
     routes.push(fixRoute)
     matched = routes.concat(matched)
   }
-  levelList.value = matched.filter((item) => item.meta && item.meta.title && item.meta.breadcrumb !== false)
+  levelList.value = matched.filter(
+    (item) => item.meta && item.meta.title && item.meta.breadcrumb !== false
+  )
 
   // 更改你标题
   if (levelList.value && levelList.value.length > 0) {
     levelList.value.map((item) => {
-      if (item.path == route.path && route.query.targetTitle && route.query.targetTitle.length > 0) {
+      if (
+        item.path == route.path &&
+        route.query.targetTitle &&
+        route.query.targetTitle.length > 0
+      ) {
         item.meta.title = route.query.targetTitle
       }
     })
@@ -105,7 +114,6 @@ watch(
 
   .no-redirect {
     color: #97a8be;
-
     cursor: text;
   }
 }

@@ -1,4 +1,4 @@
- // 正常的菜单
+// 正常的菜单
 .app-layout-wrapper {
   position: relative;
   width: 100%;
@@ -6,103 +6,108 @@
   box-sizing: border-box;
 
   // 背景面板
-  .mobile-open-side-bar-bg{
+  .mobile-open-side-bar-bg {
     position: fixed;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
+    z-index: 900;
     background-color: #000;
     opacity: 0.3;
-    z-index: 900;
     transition: opacity 0.5s;
   }
 
   // 左侧侧滑
   .layout-side-bar {
     position: fixed;
-    font-size: 0px;
     top: 0;
     bottom: 0;
     left: 0;
     z-index: 1001;
-    overflow: hidden;
     width: $sideBarMaxWidth;
+    font-size: 0;
     background-color: $menuBg;
+    overflow: hidden;
     transition: width 0.28s;
 
-     // 重置element-ui css
-     .horizontal-collapse-transition {
-      transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
-     }
-
+    // 重置element-ui css
+    .horizontal-collapse-transition {
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+        0s padding-right ease-in-out;
+    }
 
     // 菜单
-    .el-menu{
-      border: none;
-      height: 100%;
+    .el-menu {
       width: 100% !important;
+      height: 100%;
+      border: none;
 
       // 主菜单/子菜单
-      .el-menu-item, .el-sub-menu .el-sub-menu__title{
-        height:  $menuHeight;
+      .el-menu-item,
+      .el-sub-menu .el-sub-menu__title {
+        height: $menuHeight;
         color: $menuTextColor;
       }
 
-       // 微调图标
-      .item-svg-icon{
-        margin-bottom: 2px;
+      // 微调图标
+      .item-svg-icon {
         margin-right: 5px;
+        margin-bottom: 2px;
         font-size: 16px;
       }
     }
 
-     // 设置菜单鼠标hover
-     .submenu-title-noDropdown,.el-sub-menu__title {
-        display: flex;
-        align-items: center;
-        &:hover {
-            background-color: $menuHover !important;
-        }
-      }
+    // 设置菜单鼠标hover
+    /* stylelint-disable-next-line selector-class-pattern */
+    .submenu-title-noDropdown,
+    /* stylelint-disable-next-line selector-class-pattern */
+    .el-sub-menu__title {
+      display: flex;
+      align-items: center;
 
-      // 设置菜单活跃状态
-      .is-active  {
-          color: $menuActiveTextColor !important;
+      &:hover {
+        background-color: $menuHover !important;
       }
+    }
 
-      // 滚动处理
-      &.has-logo {
-        .el-scrollbar {
-            height: calc(100% - $navigatorLogoBarHeight);
-        }
-     }
-      .el-scrollbar__bar.is-vertical {
-          right: 0px;
-      }
+    // 设置菜单活跃状态
+    .is-active {
+      color: $menuActiveTextColor !important;
+    }
 
+    // 滚动处理
+    &.has-logo {
       .el-scrollbar {
-          height: 100%;
+        height: calc(100% - $navigatorLogoBarHeight);
       }
+    }
 
-      .scrollbar-wrapper {
-        overflow-x: hidden !important;
-      }
-      .is-horizontal {
-        display: none;
-      }
+    .el-scrollbar__bar.is-vertical {
+      right: 0;
+    }
 
+    .el-scrollbar {
+      height: 100%;
+    }
 
+    .scrollbar-wrapper {
+      overflow-x: hidden !important;
+    }
+
+    .is-horizontal {
+      display: none;
+    }
   }
   // 右侧内容
   .layout-right-wrapper {
-    min-height: 100%;
-    transition: margin-left 0.28s;
-    margin-left: $sideBarMaxWidth;
     position: relative;
+    min-height: 100%;
+    margin-left: $sideBarMaxWidth;
+    transition: margin-left 0.28s;
 
     // 固定头部
-    .fixed-header{
+    .fixed-header {
       position: fixed;
       top: 0;
       right: 0;
@@ -114,45 +119,45 @@
 }
 
 // 隐藏侧滑栏状态样式
-.hideSidebar{
+.hideSidebar {
   // 侧滑栏
-  .layout-side-bar{
+  .layout-side-bar {
     width: $sideBarMinWidth;
 
-    .side-bar-item{
+    .side-bar-item {
       box-sizing: border-box;
-      .el-menu-item, .el-sub-menu{
-        padding: 0px;
+
+      .el-menu-item,
+      .el-sub-menu {
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
+        padding: 0;
         color: white;
       }
 
-      // 图标 
-      .item-svg-icon{
+      // 图标
+      .item-svg-icon {
+        margin: 0;
         font-size: 20px;
-        margin:0px;
       }
-  
+
       // 文字
-      .item-title{
+      .item-title {
         display: none;
       }
 
       // 去除箭头
-      .el-sub-menu__icon-arrow{
+      .el-sub-menu__icon-arrow {
         display: none;
       }
     }
-
-    
   }
 
-  .layout-right-wrapper{
+  .layout-right-wrapper {
     margin-left: $sideBarMinWidth;
     // 固定头部
-    .fixed-header{
+    .fixed-header {
       position: fixed;
       top: 0;
       right: 0;
@@ -163,19 +168,17 @@
   }
 }
 
-
-
-
 // 手机状态样式
-.mobile{
-  .layout-side-bar{
+.mobile {
+  .layout-side-bar {
     width: $sideBarMaxWidth !important;
     transition: transform 0.28s;
-  } 
-  .layout-right-wrapper{
-    margin-left: 0px;
+  }
+
+  .layout-right-wrapper {
+    margin-left: 0;
     // 固定头部
-    .fixed-header{
+    .fixed-header {
       position: fixed;
       top: 0;
       right: 0;
@@ -185,18 +188,19 @@
     }
   }
 
-  &.hideSidebar{
-    .layout-side-bar{
-       transform: translate3d(-$sideBarMaxWidth, 0, 0);
+  &.hideSidebar {
+    .layout-side-bar {
+      transform: translate3d(-$sideBarMaxWidth, 0, 0);
     }
   }
 }
 
 // 菜单展开
 .side-bar-popper {
-    // 菜单扩展
-  .side-bar-item{
-    .el-menu-item, .el-sub-menu__title{
+  // 菜单扩展
+  .side-bar-item {
+    .el-menu-item,
+    .el-sub-menu__title {
       color: white;
     }
   }
@@ -205,28 +209,29 @@
   .el-menu-item {
     display: flex;
     align-items: center;
-      &:hover {
-          // 也可以使用$subMenuHover
-          background-color: $menuHover !important;
-      }
+
+    &:hover {
+      // 也可以使用$subMenuHover
+      background-color: $menuHover !important;
+    }
   }
 
   // 子菜单过长显示滚动条
   > .el-menu--popup {
-      max-height: 100vh;
-      overflow-y: auto;
+    max-height: 100vh;
+    overflow-y: auto;
 
-      &::-webkit-scrollbar-track-piece {
-          background: #d3dce6;
-      }
+    &::-webkit-scrollbar-track-piece {
+      background: #d3dce6;
+    }
 
-      &::-webkit-scrollbar {
-          width: 6px;
-      }
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
 
-      &::-webkit-scrollbar-thumb {
-          background: #99a9bf;
-          border-radius: 20px;
-      }
+    &::-webkit-scrollbar-thumb {
+      background: #99a9bf;
+      border-radius: 20px;
+    }
   }
 }

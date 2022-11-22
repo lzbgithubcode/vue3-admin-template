@@ -21,11 +21,16 @@
             <router-link to="/">
               <el-dropdown-item>控制台</el-dropdown-item>
             </router-link>
-            <a target="_blank" href="https://github.com/lzbgithubcode/vue3-admin-template">
+            <a
+              target="_blank"
+              href="https://github.com/lzbgithubcode/vue3-admin-template"
+            >
               <el-dropdown-item>Github</el-dropdown-item>
             </a>
 
-            <el-dropdown-item divided @click="loginOut"> 退出 </el-dropdown-item>
+            <el-dropdown-item divided @click="loginOut">
+              退出
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -65,16 +70,18 @@ const loginOut = () => {
   line-height: $navigatorOperationBarHeight;
   border-bottom: 1px solid $borderSeparateColor;
   background: white;
+
   .nav-bar-left {
-    flex: 1;
     display: flex;
+    flex: 1;
     cursor: pointer;
 
     .hover-bg {
       transition: background 0.2s;
     }
+
     .hover-bg:hover {
-      background: rgba(0, 0, 0, 0.025);
+      background: rgb(0 0 0 / 2.5%);
     }
 
     // 面包屑
@@ -82,12 +89,14 @@ const loginOut = () => {
       margin-left: 15px;
     }
   }
+
   .nav-bar-right {
-    flex: 3;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    flex: 3;
     padding-right: 15px;
+
     .avatar-wrapper {
       .user-avatar {
         width: 40px;
@@ -96,9 +105,11 @@ const loginOut = () => {
         border-radius: 50%;
         box-sizing: border-box;
       }
+
       .user-name {
         margin-left: 10px;
       }
+
       .user-arrow-down {
         margin-left: 5px;
       }

@@ -32,5 +32,5 @@
 <script src="./login.js"></script>
 
 <style lang="scss">
-@import './login.scss';
+@import url('./login');
 </style>
