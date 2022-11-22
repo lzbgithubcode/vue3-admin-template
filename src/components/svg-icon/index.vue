@@ -1,11 +1,15 @@
 <template>
-  <div v-if="isExternal" :style="styleExternalIcon" class="svg-external-icon svg-icon" />
+  <div
+    v-if="isExternal"
+    :style="styleExternalIcon"
+    class="svg-external-icon svg-icon"
+  />
   <svg v-else :class="svgClass" aria-hidden="true">
     <use :xlink:href="iconName" />
   </svg>
 </template>
 <script setup>
-import { computed } from 'vue'
+import { computed, defineProps } from 'vue'
 import { isExternalURL } from '../../utils/helper/ValidateHelper'
 
 // 定义属性

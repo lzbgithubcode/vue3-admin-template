@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, defineProps } from 'vue'
 import { isExternalURL } from '@/utils/helper/ValidateHelper'
 
 // 定义属性

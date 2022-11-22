@@ -22,7 +22,10 @@ export const useTagsViewStore = defineStore('tagsView', {
           params: view.params,
           path: view.path,
           query: view.query,
-          title: (view.query && view.query.targetTitle) || view.meta.title || 'no-name'
+          title:
+            (view.query && view.query.targetTitle) ||
+            view.meta.title ||
+            'no-name'
         })
       })
     },

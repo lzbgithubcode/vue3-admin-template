@@ -20,7 +20,7 @@
 
 <script setup>
 import settings from '@/settings.js'
-import { reactive } from 'vue'
+import { reactive, defineProps } from 'vue'
 
 // 定义属性
 defineProps({

@@ -45,7 +45,7 @@ import ScreenFullButton from './ScreenFullButton.vue'
 import { useUserStore } from '../../../store/modules/user.js'
 import { useAppStore } from '../../../store/modules/app.js'
 import { logout } from '../../../utils/user/UserUtils.js'
-import { computed, isRef } from 'vue'
+import { computed } from 'vue'
 
 const useUser = useUserStore()
 const useApp = useAppStore()
@@ -59,7 +59,7 @@ const avatar = computed(() => {
 const isMobile = computed(() => useApp.device == 'mobile')
 
 const loginOut = () => {
-  logout().then((res) => {})
+  logout().then(() => {})
 }
 </script>
 <style scoped lang="scss">

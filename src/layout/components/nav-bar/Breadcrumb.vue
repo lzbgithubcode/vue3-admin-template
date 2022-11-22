@@ -20,7 +20,7 @@
 import { BaseRoute } from '@/utils/constants/RoutePathConstants'
 import { useRoute, useRouter } from 'vue-router'
 import { isEmptyObject } from '@/utils/helper/ObjectHelper.js'
-import { pathToRegexp, compile } from 'path-to-regexp'
+import { pathToRegexp } from 'path-to-regexp'
 import { onMounted, ref, watch } from 'vue'
 
 // 路由级别
@@ -97,7 +97,7 @@ onMounted(() => {
 // 观察着
 watch(
   () => route.path,
-  (now, pre) => {
+  (now) => {
     // 不要将redirect页面加入到面包屑
     if (now.startsWith('/redirect/')) {
       return

@@ -10,7 +10,7 @@ http.interceptors.request.use(
   (config) => {
     return config
   },
-  (err) => {
+  (error) => {
     return Promise.reject(error)
   }
 )

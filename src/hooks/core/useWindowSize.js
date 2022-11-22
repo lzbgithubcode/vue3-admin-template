@@ -41,7 +41,8 @@ export function useWindowSize(opts = useWindowSizeOptions) {
     window.addEventListener('resize', update, { passive: true })
 
     // 监听方向
-    options.listenOrientation && window.addEventListener('orientationchange', update, { passive: true })
+    options.listenOrientation &&
+      window.addEventListener('orientationchange', update, { passive: true })
   })
 
   onUnmounted(() => {

@@ -19,11 +19,10 @@ import { computed, getCurrentInstance, reactive, watch } from 'vue'
 import ScrollPane from './ScrollPane.vue'
 import { useTagsViewStore } from '../../../store/modules/tagsView.js'
 import { usePermissionStore } from '../../../store/modules/permission'
-import { useRouter, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 
 const useTags = useTagsViewStore()
 const usePermission = usePermissionStore()
-const $router = useRouter()
 const $route = useRoute()
 const { proxy } = getCurrentInstance()
 
@@ -42,7 +41,9 @@ const routes = computed(() => usePermission.routes)
 // ============================================watch==================================================//
 watch(
   () => $route.path,
-  (toPath) => {}
+  (toPath) => {
+    console.log(toPath)
+  }
 )
 
 watch(
@@ -72,7 +73,10 @@ const isAffix = (tag) => tag.meta && tag.meta.affix
  */
 const closeVisibleMenuPane = (event) => {
   const { classList } = event.target
-  if (classList.contains('tags-view-operate') || classList.contains('el-icon-setting')) {
+  if (
+    classList.contains('tags-view-operate') ||
+    classList.contains('el-icon-setting')
+  ) {
     return false
   }
   state.visible = false
@@ -88,6 +92,7 @@ const closeVisibleMenuPane = (event) => {
 const openMenuPane = (tag, $event) => {
   // 左边距
   const offsetLeft = proxy.$el.getBoundingClientRect().left
+  console.log(offsetLeft, tag, $event)
 }
 
 /**

@@ -5,6 +5,7 @@
 </template>
 
 <script setup>
+import { defineProps } from 'vue'
 import * as ElSvg from '@element-plus/icons-vue'
 const props = defineProps({
   elSvgName: {
@@ -12,6 +13,7 @@ const props = defineProps({
     type: String
   }
 })
+// eslint-disable-next-line vue/no-setup-props-destructure
 const { elSvgName } = props
 </script>
 

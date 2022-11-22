@@ -1,18 +1,40 @@
 <template>
   <div v-if="!item.hidden" class="side-bar-item">
-    <template v-if="hasOneShowingChild(item.children, item) && (!onlyOneChild.children || onlyOneChild.noShowingChildren) && !item.alwaysShow">
+    <template
+      v-if="
+        hasOneShowingChild(item.children, item) &&
+        (!onlyOneChild.children || onlyOneChild.noShowingChildren) &&
+        !item.alwaysShow
+      "
+    >
       <Link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
-        <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{ 'submenu-title-noDropdown': !isNest }">
+        <el-menu-item
+          :index="resolvePath(onlyOneChild.path)"
+          :class="{ 'submenu-title-noDropdown': !isNest }"
+        >
           <Item :meta="onlyOneChild.meta || item.meta" />
         </el-menu-item>
       </Link>
     </template>
 
-    <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)" popper-class="side-bar-popper" popper-append-to-body>
+    <el-sub-menu
+      v-else
+      ref="subMenu"
+      :index="resolvePath(item.path)"
+      popper-class="side-bar-popper"
+      popper-append-to-body
+    >
       <template #title>
         <Item v-if="item.meta" :meta="item.meta" />
       </template>
-      <SideBarItem v-for="child in item.children" :key="child.path" :is-nest="true" :item="child" :base-path="resolvePath(child.path)" class="nest-menu" />
+      <SideBarItem
+        v-for="child in item.children"
+        :key="child.path"
+        :is-nest="true"
+        :item="child"
+        :base-path="resolvePath(child.path)"
+        class="nest-menu"
+      />
     </el-sub-menu>
   </div>
 </template>
@@ -20,7 +42,7 @@
 <script setup>
 import { isExternalURL } from '@/utils/helper/ValidateHelper'
 import { ExternalLinkRouterWhiteList } from '@/utils/constants/EnumConstants.js'
-import { ref } from 'vue'
+import { ref, defineProps } from 'vue'
 import Link from './Link.vue'
 import Item from './Item'
 import path from 'path'

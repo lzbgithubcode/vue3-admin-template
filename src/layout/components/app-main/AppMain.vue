@@ -31,7 +31,7 @@ const key = computed(() => route.path)
   box-sizing: border-box;
 }
 
-.fixed-header+.app-main {
+.fixed-header + .app-main {
   margin-top: $navigatorOperationBarHeight;
 }
 </style>
