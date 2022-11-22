@@ -19,13 +19,9 @@ module.exports = {
         'test'
       ]
     ],
-    'type-case': [0],
-    'type-empty': [0],
-    'scope-empty': [0],
-    'scope-case': [0],
+    'type-empty': [1],
+    'scope-empty': [1],
     'subject-empty': [0],
-    'subject-full-stop': [0],
-    'subject-case': [0, 'never'],
     'header-max-length': [0, 'always', 72]
   }
 }
