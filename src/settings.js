@@ -4,7 +4,7 @@ export default {
    */
   title: 'vue3-template',
   /**
-   * 是否打开mock服务
+   * 是否打开mock服务对对对
    */
   openMockServe: false,
 
