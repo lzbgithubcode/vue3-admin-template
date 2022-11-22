@@ -82,9 +82,7 @@ const selectedMenu = (path) => {
  * scss -> json
  */
 const scssToJson = (scssExportJson) => {
-  const jsonString = scssExportJson
-    .replace(/:export\s*/, '')
-    .replace(/[\s+\r\n]/g, '')
+  const jsonString = scssExportJson.replace(/:export\s*/, '').replace(/[\s+\r\n]/g, '')
   const scssJson = {}
   jsonString
     .slice(1, jsonString.length - 2)

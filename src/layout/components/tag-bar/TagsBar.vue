@@ -73,10 +73,7 @@ const isAffix = (tag) => tag.meta && tag.meta.affix
  */
 const closeVisibleMenuPane = (event) => {
   const { classList } = event.target
-  if (
-    classList.contains('tags-view-operate') ||
-    classList.contains('el-icon-setting')
-  ) {
+  if (classList.contains('tags-view-operate') || classList.contains('el-icon-setting')) {
     return false
   }
   state.visible = false

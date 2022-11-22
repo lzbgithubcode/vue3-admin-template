@@ -7,8 +7,15 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:vue/vue3-recommended',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    '@vue/prettier'
   ],
+  globals: {
+    defineProps: 'readonly',
+    defineEmits: 'readonly',
+    defineExpose: 'readonly',
+    withDefaults: 'readonly'
+  },
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',

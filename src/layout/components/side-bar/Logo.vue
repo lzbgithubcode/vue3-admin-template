@@ -1,12 +1,7 @@
 <template>
   <div class="sidebar-log-container" :class="{ collapse: collapse }">
     <transition name="logoFade">
-      <router-link
-        v-if="collapse"
-        key="collapse"
-        class="sidebar-logo-link"
-        to="/"
-      >
+      <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
         <img v-if="state.logo" :src="state.logo" class="sidebar-logo" />
         <span v-else class="sidebar-title">{{ state.title }}</span>
       </router-link>

@@ -1,11 +1,7 @@
 <template>
   <div class="app-layout-wrapper" :class="classObj">
     <!--覆盖面板-->
-    <div
-      v-if="showMobileBg"
-      class="mobile-open-side-bar-bg"
-      @click="onClickCloseSideBar"
-    />
+    <div v-if="showMobileBg" class="mobile-open-side-bar-bg" @click="onClickCloseSideBar" />
 
     <!-- 左侧菜单 -->
     <SideBar class="layout-side-bar" />
@@ -30,9 +26,7 @@ import { useResizeDevice } from '../hooks/core/useResizeDevice.js'
 useResizeDevice()
 const useApp = useAppStore()
 const fixedHeader = computed(() => useApp.settings.fixedHeader)
-const showMobileBg = computed(
-  () => useApp.device == 'mobile' && useApp.sidebar.opened
-)
+const showMobileBg = computed(() => useApp.device == 'mobile' && useApp.sidebar.opened)
 const classObj = computed(() => {
   return {
     hideSidebar: !useApp.sidebar.opened,

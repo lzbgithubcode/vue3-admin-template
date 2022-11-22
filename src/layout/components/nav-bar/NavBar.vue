@@ -21,16 +21,11 @@
             <router-link to="/">
               <el-dropdown-item>控制台</el-dropdown-item>
             </router-link>
-            <a
-              target="_blank"
-              href="https://github.com/lzbgithubcode/vue3-admin-template"
-            >
+            <a target="_blank" href="https://github.com/lzbgithubcode/vue3-admin-template">
               <el-dropdown-item>Github</el-dropdown-item>
             </a>
 
-            <el-dropdown-item divided @click="loginOut">
-              退出
-            </el-dropdown-item>
+            <el-dropdown-item divided @click="loginOut"> 退出 </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
