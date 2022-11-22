@@ -37,7 +37,7 @@ const state = reactive({
 })
 const visitedViews = computed(() => useTags.visitedViews)
 const routes = computed(() => usePermission.routes)
-
+console.log('=======', routes)
 // ============================================watch==================================================//
 watch(
   () => $route.path,
@@ -97,6 +97,8 @@ const openMenuPane = (tag, $event) => {
  * @param {*} tag tag标签
  * @return {*} void
  */
-const closeSelectedTag = (tag) => {}
+const closeSelectedTag = (tag) => {
+  console.log(tag)
+}
 </script>
 <style scoped lang="scss"></style>
