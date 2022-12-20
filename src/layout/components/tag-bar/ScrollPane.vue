@@ -23,5 +23,6 @@ const monitorScrollChange = () => {}
 <style scoped lang="scss">
 .tag-scroll-bar {
   display: flex;
+  justify-content: flex-start;
 }
 </style>

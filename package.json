@@ -13,15 +13,17 @@
     "pre-build": "vue-cli-service build --mode preprod",
     "sim-build": "vue-cli-service build --mode sim",
     "prod-build": "vue-cli-service build --mode production",
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install",
+    "commit": "git add . && git cz",
     "eslint": "eslint . --ext .vue,.js ./src",
     "eslint:fix": "eslint . --ext .vue,.js --fix ./src",
     "style": "stylelint \"./**/*.{css,scss,sass,vue,html}\" ./src",
     "style:fix": "stylelint \"./**/*.{css,scss,sass,vue,html}\" --fix ./src",
     "lint": "pnpm run eslint && pnpm run style",
     "lint:fix": "pnpm run eslint:fix && pnpm run style:fix",
-    "format": "prettier --write \"./**/*.{html,vue,js,json}\"",
-    "preinstall": "npx only-allow pnpm",
-    "prepare": "husky install",
+    "format": "prettier --check --cache  \"./**/*.{html,vue,js,json}\"",
+    "format:fix": "prettier --write --cache  \"./**/*.{html,vue,js,json}\"",
     "lint-staged": "lint-staged"
   },
   "dependencies": {
@@ -58,6 +60,9 @@
     "body-parser": "^1.20.0",
     "chalk": "^4.0.0",
     "chokidar": "^3.4.0",
+    "commitizen": "^4.2.6",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.0.0",
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^3.4.1",
@@ -88,19 +93,12 @@
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-template-compiler": "^2.7.8"
   },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.vue": [
-      "eslint --fix",
-      "prettier --write",
-      "stylelint --fix"
-    ],
-    "*.{scss,css,html}": [
-      "stylelint --fix",
-      "prettier --write"
-    ]
+  "config": {
+    "commitizen": {
+      "path": "cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.cjs"
+    }
   }
 }
