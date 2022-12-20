@@ -33,8 +33,7 @@
 
     // 重置element-ui css
     .horizontal-collapse-transition {
-      transition: 0s width ease-in-out, 0s padding-left ease-in-out,
-        0s padding-right ease-in-out;
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
     }
 
     // 菜单
@@ -59,9 +58,7 @@
     }
 
     // 设置菜单鼠标hover
-    /* stylelint-disable-next-line selector-class-pattern */
     .submenu-title-noDropdown,
-    /* stylelint-disable-next-line selector-class-pattern */
     .el-sub-menu__title {
       display: flex;
       align-items: center;
@@ -148,6 +145,7 @@
       }
 
       // 去除箭头
+      /* stylelint-disable-next-line selector-class-pattern */
       .el-sub-menu__icon-arrow {
         display: none;
       }
@@ -188,6 +186,7 @@
     }
   }
 
+  /* stylelint-disable-next-line selector-class-pattern */
   &.hideSidebar {
     .layout-side-bar {
       transform: translate3d(-$sideBarMaxWidth, 0, 0);

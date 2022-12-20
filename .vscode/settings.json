@@ -1,6 +1,5 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
     "source.fixAll.eslint": true,
     // 新增stylelint 保存时候
     "source.fixAll.stylelint": true

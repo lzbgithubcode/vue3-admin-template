@@ -27,19 +27,17 @@ module.exports = {
     '**/*.ts',
     '**/*.json',
     '**/*.md',
-    '**/*.yaml'
+    '**/*.yaml',
+    '**/*.svg'
   ],
   rules: {
     // 禁止在具有较高优先级的选择器后出现被其覆盖的较低优先级的选择器
     'no-descending-specificity': null,
+    'no-empty-source': null,
     // // 指定一个模式类选择符。
+    'no-duplicate-selectors': null,
     // 类选择器的命名规则
-    'selector-class-pattern': [
-      '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
-      {
-        message: 'Expected class selector to be kebab-case'
-      }
-    ],
+    'selector-class-pattern': null,
     // 指定样式的排序
     'order/properties-order': [
       'position',

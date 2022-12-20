@@ -118,7 +118,7 @@ export default defineComponent({
     onClickLoginEvent() {
       console.log('点击登录', this.formObject)
       const param = this.formObject
-      login(param).then((res) => {
+      login(param).then(() => {
         this.$router.push(BaseRoute.FIX_PATH)
       })
     }

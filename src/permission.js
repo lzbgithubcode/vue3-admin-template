@@ -9,7 +9,6 @@ import TokenUtil from './utils/helper/TokenUtil'
 import RouteUtil from './router/RouteUtil.js'
 import { BaseRoute } from './utils/constants/RoutePathConstants'
 import { useUserStore } from './store/modules/user'
-import { isExternalURL } from './utils/helper/ValidateHelper'
 
 // 进度条配置
 ProgressUtil.initProgress()

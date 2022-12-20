@@ -10,7 +10,7 @@ export default defineComponent({
       const { path } = params
       router.replace({ path: '/' + path, query })
     })
-    return () => <div></div>
+    return `() => <div></div>`
   }
 })
 </script>

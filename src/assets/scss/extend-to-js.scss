@@ -1,10 +1,19 @@
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 :export {
+  /* stylelint-disable-next-line property-no-unknown */
   menuTextColor: $menuTextColor;
+  /* stylelint-disable-next-line property-no-unknown */
   menuActiveTextColor: $menuActiveTextColor;
+  /* stylelint-disable-next-line property-no-unknown */
   menuBg: $menuBg;
+  /* stylelint-disable-next-line property-no-unknown */
   menuHover: $menuHover;
+  /* stylelint-disable-next-line property-no-unknown */
   subMenuBg: $subMenuBg;
+  /* stylelint-disable-next-line property-no-unknown */
   subMenuHover: $subMenuHover;
+  /* stylelint-disable-next-line property-no-unknown */
   sideBarMaxWidth: $sideBarMaxWidth;
+  /* stylelint-disable-next-line property-no-unknown */
   sideBarMinWidth: $sideBarMinWidth;
 }

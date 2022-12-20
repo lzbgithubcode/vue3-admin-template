@@ -52,7 +52,7 @@ function handleLoginSuccessData(res) {
  * 退出登录处理
  */
 function handleLogOutSuccessData(res) {
-  console.log('退出登录-------')
+  console.log('退出登录-------', res)
 
   router.push(`/login?redirect=/`)
 }

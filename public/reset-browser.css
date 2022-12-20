@@ -25,6 +25,7 @@ span {
   box-sizing: border-box;
 }
 
+/* stylelint-disable-next-line no-duplicate-selectors */
 div,
 span::before,
 div,
