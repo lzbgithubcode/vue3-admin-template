@@ -1,7 +1,13 @@
 // 约定提交规范 - 书写规范
 
 const fs = require('fs')
-const scopesList = fs.readdirSync('src')
+const scopesList = fs.readdirSync('src').filter((f) => {
+  if (!fs.statSync(`src/${f}`).isDirectory()) {
+    return false
+  }
+  return true
+})
+
 scopesList.push('scripts脚本')
 scopesList.push('docs文档')
 module.exports = {
