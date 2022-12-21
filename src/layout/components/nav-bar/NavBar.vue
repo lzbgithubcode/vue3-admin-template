@@ -58,7 +58,6 @@ const loginOut = () => {
 }
 </script>
 <style scoped lang="scss">
-@import '../../../assets/scss/extend-variables.scss';
 .nav-bar-wrapper {
   display: flex;
   align-items: center;
