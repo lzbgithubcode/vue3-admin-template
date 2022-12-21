@@ -46,5 +46,5 @@ const onClickCloseSideBar = () => {
 </script>
 
 <style lang="scss">
-@import url('../assets/scss/layout');
+// @import url('../assets/scss/layout.scss');
 </style>

@@ -145,7 +145,6 @@
       }
 
       // 去除箭头
-      /* stylelint-disable-next-line selector-class-pattern */
       .el-sub-menu__icon-arrow {
         display: none;
       }
@@ -186,7 +185,6 @@
     }
   }
 
-  /* stylelint-disable-next-line selector-class-pattern */
   &.hideSidebar {
     .layout-side-bar {
       transform: translate3d(-$sideBarMaxWidth, 0, 0);

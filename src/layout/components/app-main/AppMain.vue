@@ -23,6 +23,7 @@ const cachedViews = computed(() => useTagsView.cachedViews)
 const key = computed(() => route.path)
 </script>
 <style scoped lang="scss">
+@import '../../../assets/scss/extend-variables.scss';
 .app-main {
   position: relative;
   min-height: calc(100vh - #{$navigatorOperationBarHeight});

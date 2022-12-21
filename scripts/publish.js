@@ -5,7 +5,7 @@ runPublish()
 async function runPublish() {
   // 1.代码格式化
   logInfo('\n 代码格式化....')
-  await execCmd('pnpm', ['run', 'lint'])
+  await execCmd('pnpm', ['run', 'eslint'])
 
   // 2. 代码格式检测
   logInfo('\n 代码格式检测....')

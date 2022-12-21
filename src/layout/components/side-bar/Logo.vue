@@ -34,12 +34,12 @@ const state = reactive({
 .sidebar-log-container {
   position: relative;
   width: 100%;
-  height: $navigatorLogoBarHeight;
+  // height: $navigatorLogoBarHeight;
   font-size: 14px;
   text-align: center;
   background: #2b2f3a;
   overflow: hidden;
-  line-height: $navigatorLogoBarHeight;
+  // line-height: $navigatorLogoBarHeight;
 
   .sidebar-logo-link {
     width: 100%;

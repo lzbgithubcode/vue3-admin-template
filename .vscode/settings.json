@@ -1,8 +1,6 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    // 新增stylelint 保存时候
-    "source.fixAll.stylelint": true
+    "source.fixAll.eslint": true
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "vue"],
   // "[vue]": {
@@ -10,8 +8,5 @@
   //   "editor.defaultFormatter": "Vue.volar"
   // },
   // 默认格式化工具选择prettier
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-
-  // stylelint校验的文件格式
-  "stylelint.validate": ["css", "scss", "sass", "html", "vue"]
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

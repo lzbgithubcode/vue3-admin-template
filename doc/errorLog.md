@@ -27,3 +27,5 @@
 #### 6. vue-router 报错`useRouter() return undefined`
 
 解决方案: useRouter() 不能单独在 js 中使用，只能是在 setup 的组合式 API 中使用
+
+#### 7.`vite dev`之后运行报错`[vite] Internal server error: Cannot read properties of undefined (reading 'length')`

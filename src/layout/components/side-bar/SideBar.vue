@@ -31,7 +31,7 @@
 import { computed } from 'vue'
 import Logo from './Logo.vue'
 import SideBarItem from './SideBarItem.vue'
-import variablesObj from '@/assets/scss/extend-to-js.scss'
+import variablesObj from '@/assets/scss/extend-to-js.scss?inline'
 import { useAppStore } from '@/store/modules/app.js'
 import { usePermissionStore } from '@/store/modules/permission.js'
 import { useRoute, useRouter } from 'vue-router'

@@ -8,3 +8,4 @@ import defaultSettings from './settings.js'
 const appStore = useAppStore()
 appStore.actionChangeSettings(defaultSettings)
 </script>
+<style lang="scss"></style>

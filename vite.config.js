@@ -43,6 +43,7 @@ export default defineConfig(({ command, mode }) => {
   // 自定义element-plus按需导入插件
   pluginList.push(
     AutoImport({
+      dts: false,
       resolvers: [
         // 自动导入 Element Plus 相关函数
         ElementPlusResolver(),
@@ -55,6 +56,7 @@ export default defineConfig(({ command, mode }) => {
   )
   pluginList.push(
     Components({
+      dts: false,
       resolvers: [
         // 自动导入 Element Plus 组件
         ElementPlusResolver({
@@ -122,7 +124,7 @@ export default defineConfig(({ command, mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "@/assets/scss/index.scss" as *;'
+          additionalData: `@use '@/assets/scss/index.scss' as *;`
         }
       }
     },

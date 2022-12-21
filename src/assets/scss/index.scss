@@ -1,3 +1,5 @@
 @use './element-plus-override.scss';
+
+/* stylelint-disable-next-line import-notation */
 /* stylelint-disable-next-line scss/at-import-partial-extension */
-@import url('./extend-variables.scss');
+@import './extend-variables.scss';
