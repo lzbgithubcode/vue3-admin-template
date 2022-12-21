@@ -1,10 +1,14 @@
-import { defineComponent, reactive } from 'vue'
+import { reactive } from 'vue'
 import { loadFull } from 'tsparticles'
 import { login } from '../../utils/user/UserUtils'
 import { BaseRoute } from '../../utils/constants/RoutePathConstants'
+import PopAnimation from '@/components/pop-animation/index.vue'
 
-export default defineComponent({
+export default {
   name: 'Login',
+  components: {
+    PopAnimation
+  },
   setup() {
     const particlesOptions = {
       background: {
@@ -100,6 +104,7 @@ export default defineComponent({
       useName: 'admin',
       pwd: '123456'
     })
+
     return {
       particlesOptions,
       formObject
@@ -123,4 +128,4 @@ export default defineComponent({
       })
     }
   }
-})
+}

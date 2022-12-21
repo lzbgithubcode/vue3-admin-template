@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
+    "@vueuse/motion": "2.0.0-beta.12",
     "axios": "^1.1.2",
     "core-js": "^3.6.5",
     "element-plus": "^2.2.6",

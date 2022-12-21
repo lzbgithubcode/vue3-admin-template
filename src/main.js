@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import './permission'
 import Particles from 'vue3-particles'
+import { MotionPlugin } from '@vueuse/motion'
 
 const app = createApp(App)
 
@@ -14,6 +15,7 @@ app.component(SvgIcon)
 import 'virtual:svg-icons-register'
 
 app.use(Particles)
+app.use(MotionPlugin)
 app.use(store())
 app.use(router)
 app.mount('#app')

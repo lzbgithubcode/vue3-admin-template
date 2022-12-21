@@ -4,8 +4,19 @@ import RouterManager from './RouterManager.js'
 const createRouterFunc = () => {
   return createRouter({
     history: createWebHistory(),
-    scrollBehavior: () => ({ top: 0 }),
-    routes: RouterManager.getStaticRoutes()
+    routes: RouterManager.getStaticRoutes(),
+    scrollBehavior: (to, from, savedPosition) => {
+      return new Promise((resolve) => {
+        if (savedPosition) {
+          return savedPosition
+        } else {
+          if (from.meta.saveScrollTop) {
+            const top = document.documentElement.scrollTop || document.body.scrollTop
+            resolve({ left: 0, top })
+          }
+        }
+      })
+    }
   })
 }
 
