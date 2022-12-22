@@ -29,6 +29,11 @@
           </el-dropdown-menu>
         </template>
       </el-dropdown>
+
+      <!-- 设置按钮  -->
+      <div class="setting-icon" @click="openSettingPanel">
+        <i-ep-setting />
+      </div>
     </div>
   </div>
 </template>
@@ -37,25 +42,9 @@
 import Breadcrumb from './Breadcrumb.vue'
 import Hamburger from './Hamburger.vue'
 import ScreenFullButton from './ScreenFullButton.vue'
-import { useUserStore } from '../../../store/modules/user.js'
-import { useAppStore } from '../../../store/modules/app.js'
-import { logout } from '../../../utils/user/UserUtils.js'
-import { computed } from 'vue'
+import { useNav } from '../../hooks/useNav.js'
 
-const useUser = useUserStore()
-const useApp = useAppStore()
-const userName = computed(() => {
-  return useUser.userData.userName
-})
-const avatar = computed(() => {
-  return useUser.userData.avatar
-})
-
-const isMobile = computed(() => useApp.device == 'mobile')
-
-const loginOut = () => {
-  logout().then(() => {})
-}
+const { isMobile, userName, avatar, loginOut, openSettingPanel } = useNav()
 </script>
 <style scoped lang="scss">
 .nav-bar-wrapper {
@@ -115,6 +104,18 @@ const loginOut = () => {
       align-items: center;
       cursor: pointer;
       padding-right: 15px;
+    }
+
+    .setting-icon {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: $navigatorOperationBarHeight;
+      width: 30px;
+      &:hover {
+        background-color: #f2f2f2;
+      }
     }
   }
 }

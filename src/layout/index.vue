@@ -1,38 +1,43 @@
 <template>
-  <div class="app-layout-wrapper" :class="classObj">
+  <div class="app-layout-wrapper" :class="setting.classObj">
     <!--覆盖面板-->
-    <div v-if="showMobileBg" class="mobile-open-side-bar-bg" @click="onClickCloseSideBar" />
+    <div v-if="setting.showMobileBg" class="mobile-open-side-bar-bg" @click="onClickCloseSideBar" />
 
     <!-- 左侧菜单 -->
     <SideBar class="layout-side-bar" />
 
     <!-- 右侧内容 -->
     <div class="layout-right-wrapper">
-      <div :class="{ 'fixed-header': fixedHeader }">
+      <div :class="{ 'fixed-header': setting.fixedHeader }">
         <NavBar />
       </div>
       <AppMain />
       <Footer />
     </div>
+
+    <!-- 系统设置 -->
+    <Settings />
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { AppMain, NavBar, Footer, SideBar } from './components/index.js'
+import { computed, reactive } from 'vue'
+import { AppMain, NavBar, Footer, SideBar, Settings } from './components/index.js'
 import { useAppStore } from '@/store/modules/app.js'
 import { useResizeDevice } from '../hooks/core/useResizeDevice.js'
 
 useResizeDevice()
 const useApp = useAppStore()
-const fixedHeader = computed(() => useApp.settings.fixedHeader)
-const showMobileBg = computed(() => useApp.device == 'mobile' && useApp.sidebar.opened)
-const classObj = computed(() => {
-  return {
-    hideSidebar: !useApp.sidebar.opened,
-    openSidebar: useApp.sidebar.opened,
-    mobile: useApp.device === 'mobile'
-  }
+const setting = reactive({
+  fixedHeader: computed(() => useApp.settings.fixedHeader),
+  showMobileBg: computed(() => useApp.device == 'mobile' && useApp.sidebar.opened),
+  classObj: computed(() => {
+    return {
+      hideSidebar: !useApp.sidebar.opened,
+      openSidebar: useApp.sidebar.opened,
+      mobile: useApp.device === 'mobile'
+    }
+  })
 })
 
 // =======================================methods =======================================//

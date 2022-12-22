@@ -26,11 +26,13 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
+    "@vueuse/core": "^9.8.2",
     "@vueuse/motion": "2.0.0-beta.12",
     "axios": "^1.1.2",
     "core-js": "^3.6.5",
     "element-plus": "^2.2.6",
     "js-cookie": "^3.0.1",
+    "mitt": "^3.0.0",
     "nprogress": "^0.2.0",
     "path-to-regexp": "^6.2.1",
     "pinia": "^2.0.17",

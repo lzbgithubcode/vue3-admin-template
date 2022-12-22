@@ -11,7 +11,7 @@ export default {
   /**
    * 是否显示侧滑logo
    */
-  sidebarLogo: true,
+  showSidebarLogo: true,
   /**
    * @type {boolean} true | false
    * @description 是否在右侧显示操作设定
@@ -22,7 +22,7 @@ export default {
    * @type {boolean} true | false
    * @description 是否显示多导航栏
    */
-  tagsView: true,
+  showTagsView: true,
 
   /**
    * 标签栏样式
