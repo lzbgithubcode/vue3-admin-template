@@ -1,12 +1,12 @@
-import { defineStore } from 'pinia'
-const key = 'tagsView'
+import { defineStore } from 'pinia';
+const key = 'tagsView';
 
 export const useTagsViewStore = defineStore('tagsView', {
   state: () => {
     return {
       visitedViews: [],
       cachedViews: []
-    }
+    };
   },
   actions: {
     /**
@@ -14,7 +14,7 @@ export const useTagsViewStore = defineStore('tagsView', {
      */
     addVisitedView(view) {
       this.$patch((state) => {
-        if (state.visitedViews.some((v) => v.path === view.path)) return
+        if (state.visitedViews.some((v) => v.path === view.path)) return;
         state.visitedViews.push({
           fullPath: view.fullPath,
           meta: view.meta,
@@ -23,19 +23,19 @@ export const useTagsViewStore = defineStore('tagsView', {
           path: view.path,
           query: view.query,
           title: (view.query && view.query.targetTitle) || view.meta.title || 'no-name'
-        })
-      })
+        });
+      });
     },
     /**
      * 新增缓存标签
      */
     addCachedView(view) {
       this.$patch((state) => {
-        if (state.cachedViews.includes(view.name)) return
+        if (state.cachedViews.includes(view.name)) return;
         if (!view.meta.noCache) {
-          state.cachedViews.push(view.name)
+          state.cachedViews.push(view.name);
         }
-      })
+      });
     }
   },
   persist: {
@@ -47,4 +47,4 @@ export const useTagsViewStore = defineStore('tagsView', {
       }
     ]
   }
-})
+});

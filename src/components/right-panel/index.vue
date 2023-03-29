@@ -16,19 +16,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import emitter from '../../utils/emitter/emitter'
+import { ref } from 'vue';
+import emitter from '../../utils/emitter/emitter';
 
-const show = ref(false)
+const show = ref(false);
 
 // 点击背景
 const onClickCloseBg = () => {
-  show.value = false
-}
+  show.value = false;
+};
 
 emitter.on('openPanel', () => {
-  show.value = !show.value
-})
+  show.value = !show.value;
+});
 </script>
 <style scoped lang="scss">
 .right-panel-wrapper {

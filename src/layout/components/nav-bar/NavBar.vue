@@ -6,7 +6,7 @@
       <!--全屏 -->
       <ScreenFullButton v-if="!isMobile" class="bar-full-screen hover-bg" />
       <!-- 面包屑 -->
-      <Breadcrumb v-if="!isMobile" class="bar-breadcrumb" />
+      <Breadcrumb v-if="!isMobile && isShowBreadcrumb" class="bar-breadcrumb" />
     </div>
     <div class="nav-bar-right">
       <el-dropdown trigger="hover">
@@ -39,12 +39,16 @@
 </template>
 
 <script setup>
-import Breadcrumb from './Breadcrumb.vue'
-import Hamburger from './Hamburger.vue'
-import ScreenFullButton from './ScreenFullButton.vue'
-import { useNav } from '../../hooks/useNav.js'
+import Breadcrumb from './Breadcrumb.vue';
+import Hamburger from './Hamburger.vue';
+import ScreenFullButton from './ScreenFullButton.vue';
+import { useNav } from '../../hooks/useNav.js';
+import { useAppStore } from '../../../store/modules/app';
+import { computed } from 'vue';
 
-const { isMobile, userName, avatar, loginOut, openSettingPanel } = useNav()
+const { isMobile, userName, avatar, loginOut, openSettingPanel } = useNav();
+const useApp = useAppStore();
+const isShowBreadcrumb = computed(() => useApp.settings.showBreadcrumb);
 </script>
 <style scoped lang="scss">
 .nav-bar-wrapper {

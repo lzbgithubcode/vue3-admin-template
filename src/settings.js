@@ -42,4 +42,4 @@ export default {
    * @description 是否固定顶部
    */
   fixedHeader: true
-}
+};

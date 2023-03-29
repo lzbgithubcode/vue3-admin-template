@@ -1,44 +1,44 @@
-import { defineConfig } from 'vite'
-import { join } from 'path'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import { join } from 'path';
+import vue from '@vitejs/plugin-vue';
 
 // 按需引入-自动导入相关
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 // svg 加载
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
 // icon 按需引入
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
 
 // jsx
-import vueJsx from '@vitejs/plugin-vue-jsx'
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
-import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 // mock 服务
-import { viteMockServe } from 'vite-plugin-mock'
+import { viteMockServe } from 'vite-plugin-mock';
 
 function resolve(dir) {
-  return join(__dirname, dir)
+  return join(__dirname, dir);
 }
 export default defineConfig(({ command, mode }) => {
-  console.log('=====env=====', mode, command)
+  console.log('=====env=====', mode, command);
 
   const pluginList = [
     vue({
       template: {
         compilerOptions: {
           isCustomElement: (tag) => {
-            return tag.startsWith('svg-icon') // (return true)
+            return tag.startsWith('svg-icon'); // (return true)
           }
         }
       }
     })
-  ]
+  ];
 
   // 自定义element-plus按需导入插件
   pluginList.push(
@@ -53,7 +53,7 @@ export default defineConfig(({ command, mode }) => {
         })
       ]
     })
-  )
+  );
   pluginList.push(
     Components({
       dts: false,
@@ -68,7 +68,7 @@ export default defineConfig(({ command, mode }) => {
         })
       ]
     })
-  )
+  );
 
   // svg穿件雪碧图插件
   pluginList.push(
@@ -78,7 +78,7 @@ export default defineConfig(({ command, mode }) => {
       // 执行icon name的格式
       symbolId: 'icon-[name]'
     })
-  )
+  );
 
   // icon图标
   pluginList.push(
@@ -86,10 +86,10 @@ export default defineConfig(({ command, mode }) => {
       compiler: 'vue3',
       autoInstall: true
     })
-  )
+  );
 
   // jsx
-  pluginList.push(vueJsx({}))
+  pluginList.push(vueJsx({}));
 
   //node
   pluginList.push(
@@ -97,7 +97,7 @@ export default defineConfig(({ command, mode }) => {
       // Whether to polyfill `node:` protocol imports.
       protocolImports: true
     })
-  )
+  );
 
   // mock 服务
   pluginList.push(
@@ -110,7 +110,7 @@ export default defineConfig(({ command, mode }) => {
       setupProdMockServer();
     `
     })
-  )
+  );
 
   return {
     plugins: pluginList,
@@ -136,5 +136,5 @@ export default defineConfig(({ command, mode }) => {
       host: true, // 显示ip
       open: true // 直接打开浏览器配置
     }
-  }
-})
+  };
+});

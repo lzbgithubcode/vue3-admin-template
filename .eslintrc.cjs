@@ -7,8 +7,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:vue/vue3-recommended',
-    'plugin:prettier/recommended',
-    '@vue/prettier'
+    '@vue/prettier',
+    'plugin:prettier/recommended'
   ],
   globals: {
     defineProps: 'readonly',
@@ -21,6 +21,8 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['vue'],
-  rules: {}
-}
+  plugins: ['vue', 'prettier'],
+  rules: {
+    semi: ['warn', 'always']
+  }
+};

@@ -5,8 +5,8 @@
 </template>
 
 <script setup>
-import { computed, defineProps } from 'vue'
-import { isExternalURL } from '@/utils/helper/ValidateHelper'
+import { computed, defineProps } from 'vue';
+import { isExternalURL } from '@/utils/helper/ValidateHelper';
 
 // 定义属性
 const props = defineProps({
@@ -14,15 +14,15 @@ const props = defineProps({
     type: String,
     required: true
   }
-})
+});
 
 // 定义计算属性
 const type = computed(() => {
   if (isExternalURL(props.to)) {
-    return 'a'
+    return 'a';
   }
-  return 'router-link'
-})
+  return 'router-link';
+});
 
 // 定义方法
 const linkProps = (url) => {
@@ -31,12 +31,12 @@ const linkProps = (url) => {
       href: url,
       target: '_blank',
       rel: 'noopener'
-    }
+    };
   } else {
     return {
       to: url
-    }
+    };
   }
-}
+};
 </script>
 <style scoped lang="scss"></style>

@@ -27,4 +27,4 @@ export const BaseRoute = {
     NO_SOURCE_PATH: '/404', // 没有资源
     NO_PERMISSIONS_PATH: '/401' // 没权限
   }
-}
+};

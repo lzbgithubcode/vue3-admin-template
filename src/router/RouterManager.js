@@ -1,5 +1,5 @@
-import Layout from '@/layout/index.vue'
-import { BaseRoute } from '../utils/constants/RoutePathConstants'
+import Layout from '@/layout/index.vue';
+import { BaseRoute } from '../utils/constants/RoutePathConstants';
 export default {
   /**
    * @description:  获取静态路由
@@ -37,7 +37,7 @@ export default {
         component: () => import('@/views/error-page/404.vue'),
         hidden: true
       }
-    ]
+    ];
   },
   /**
    * @description:  获取动态路由
@@ -127,6 +127,6 @@ export default {
           }
         ]
       }
-    ]
+    ];
   }
-}
+};

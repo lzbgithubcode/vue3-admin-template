@@ -18,7 +18,7 @@
 /**
  * @description: 监听滚动事件
  */
-const monitorScrollChange = () => {}
+const monitorScrollChange = () => {};
 </script>
 <style scoped lang="scss">
 .tag-scroll-bar {

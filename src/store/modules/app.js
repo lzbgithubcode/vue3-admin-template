@@ -1,8 +1,7 @@
-import { defineStore } from 'pinia'
-import defaultSettings from '@/settings.js'
-console.log('默认的设置=======', defaultSettings)
+import { defineStore } from 'pinia';
+import defaultSettings from '@/settings.js';
 
-const key = 'app'
+const key = 'app';
 export const useAppStore = defineStore(key, {
   state: () => {
     return {
@@ -11,34 +10,34 @@ export const useAppStore = defineStore(key, {
       },
       device: 'pc',
       settings: defaultSettings
-    }
+    };
   },
 
   actions: {
     // 修改设置
     actionChangeSettings(data) {
       this.$patch((state) => {
-        state.settings = { ...state.settings, ...data }
-      })
+        state.settings = { ...state.settings, ...data };
+      });
     },
     // 触发侧滑栏
     toggleSideBar() {
       this.$patch((state) => {
-        state.sidebar.opened = !state.sidebar.opened
-      })
+        state.sidebar.opened = !state.sidebar.opened;
+      });
     },
     // 触发设备
     toggleDevice(device) {
       this.$patch((state) => {
-        state.device = device
-      })
+        state.device = device;
+      });
     },
 
     // 关闭侧滑栏
     closeSideBar() {
       this.$patch((state) => {
-        state.sidebar.opened = false
-      })
+        state.sidebar.opened = false;
+      });
     }
   },
   persist: {
@@ -50,4 +49,4 @@ export const useAppStore = defineStore(key, {
       }
     ]
   }
-})
+});

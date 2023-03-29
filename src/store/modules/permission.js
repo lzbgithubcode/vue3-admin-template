@@ -1,12 +1,12 @@
-import RouterManager from '../../router/RouterManager'
-import { defineStore } from 'pinia'
-const key = 'permission'
+import RouterManager from '../../router/RouterManager';
+import { defineStore } from 'pinia';
+const key = 'permission';
 export const usePermissionStore = defineStore(key, {
   state: () => {
     return {
       routes: [], // 角色过滤之后的动态路由 + 静态路由
       addRoutes: [] // 角色过滤之后的动态路由
-    }
+    };
   },
   actions: {
     /**
@@ -15,28 +15,28 @@ export const usePermissionStore = defineStore(key, {
     generateRoutes(roles) {
       return new Promise((resolve) => {
         // 所有异步路由
-        const asyncRoutes = RouterManager.getAsyncRoutes()
+        const asyncRoutes = RouterManager.getAsyncRoutes();
 
         // 通过角色过滤路由
-        let accessedRoutes
+        let accessedRoutes;
         if (roles.includes('admin')) {
-          accessedRoutes = asyncRoutes || []
+          accessedRoutes = asyncRoutes || [];
         } else {
-          accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
+          accessedRoutes = filterAsyncRoutes(asyncRoutes, roles);
         }
-        console.log('动态路由======', accessedRoutes)
-        resolve(accessedRoutes)
-      })
+        console.log('动态路由======', accessedRoutes);
+        resolve(accessedRoutes);
+      });
     },
     /**
      * 合并路由
      */
     concatRoutes(routes) {
       this.$patch((state) => {
-        const constantRoutes = RouterManager.getStaticRoutes()
-        state.addRoutes = routes
-        state.routes = constantRoutes.concat(routes)
-      })
+        const constantRoutes = RouterManager.getStaticRoutes();
+        state.addRoutes = routes;
+        state.routes = constantRoutes.concat(routes);
+      });
     }
   },
   getters: {
@@ -52,29 +52,29 @@ export const usePermissionStore = defineStore(key, {
       }
     ]
   }
-})
+});
 
 function hasPermission(roles, route) {
   if (route.meta && route.meta.roles) {
-    return roles.some((role) => route.meta.roles.includes(role))
+    return roles.some((role) => route.meta.roles.includes(role));
   }
-  return true
+  return true;
 }
 
 function filterAsyncRoutes(routes, roles) {
-  const res = []
+  const res = [];
   if (!routes || routes.length == 0) {
-    return []
+    return [];
   }
   routes.forEach((route) => {
-    const tmp = { ...route }
+    const tmp = { ...route };
     if (hasPermission(roles, tmp)) {
       if (tmp.children) {
-        tmp.children = filterAsyncRoutes(tmp.children, roles)
+        tmp.children = filterAsyncRoutes(tmp.children, roles);
       }
-      res.push(tmp)
+      res.push(tmp);
     }
-  })
+  });
 
-  return res
+  return res;
 }

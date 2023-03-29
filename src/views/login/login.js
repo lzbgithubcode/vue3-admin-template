@@ -1,8 +1,8 @@
-import { reactive } from 'vue'
-import { loadFull } from 'tsparticles'
-import { login } from '../../utils/user/UserUtils'
-import { BaseRoute } from '../../utils/constants/RoutePathConstants'
-import PopAnimation from '@/components/pop-animation/index.vue'
+import { reactive } from 'vue';
+import { loadFull } from 'tsparticles';
+import { login } from '../../utils/user/UserUtils';
+import { BaseRoute } from '../../utils/constants/RoutePathConstants';
+import PopAnimation from '@/components/pop-animation/index.vue';
 
 export default {
   name: 'Login',
@@ -98,34 +98,34 @@ export default {
         }
       },
       detectRetina: true
-    }
+    };
 
     const formObject = reactive({
       useName: 'admin',
       pwd: '123456'
-    })
+    });
 
     return {
       particlesOptions,
       formObject
-    }
+    };
   },
   methods: {
     /**
      * 初始化粒子效果
      */
     async particlesInit(engine) {
-      await loadFull(engine)
+      await loadFull(engine);
     },
     /**
      * 点击登录
      */
     onClickLoginEvent() {
-      console.log('点击登录', this.formObject)
-      const param = this.formObject
+      console.log('点击登录', this.formObject);
+      const param = this.formObject;
       login(param).then(() => {
-        this.$router.push(BaseRoute.FIX_PATH)
-      })
+        this.$router.push(BaseRoute.FIX_PATH);
+      });
     }
   }
-}
+};

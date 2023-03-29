@@ -8,11 +8,12 @@
 
     <!-- 右侧内容 -->
     <div class="layout-right-wrapper">
-      <div :class="{ 'fixed-header': setting.fixedHeader }">
+      <div :class="{ 'fixed-header': setting.fixedHeader }" class="header">
         <NavBar />
       </div>
       <AppMain />
       <Footer />
+      <el-backtop target=".layout-right-wrapper" :bottom="100">回到顶部</el-backtop>
     </div>
 
     <!-- 系统设置 -->
@@ -21,13 +22,13 @@
 </template>
 
 <script setup>
-import { computed, reactive } from 'vue'
-import { AppMain, NavBar, Footer, SideBar, Settings } from './components/index.js'
-import { useAppStore } from '@/store/modules/app.js'
-import { useResizeDevice } from '../hooks/core/useResizeDevice.js'
+import { computed, reactive } from 'vue';
+import { AppMain, NavBar, Footer, SideBar, Settings } from './components/index.js';
+import { useAppStore } from '@/store/modules/app.js';
+import { useResizeDevice } from '../hooks/core/useResizeDevice.js';
 
-useResizeDevice()
-const useApp = useAppStore()
+useResizeDevice();
+const useApp = useAppStore();
 const setting = reactive({
   fixedHeader: computed(() => useApp.settings.fixedHeader),
   showMobileBg: computed(() => useApp.device == 'mobile' && useApp.sidebar.opened),
@@ -36,9 +37,9 @@ const setting = reactive({
       hideSidebar: !useApp.sidebar.opened,
       openSidebar: useApp.sidebar.opened,
       mobile: useApp.device === 'mobile'
-    }
+    };
   })
-})
+});
 
 // =======================================methods =======================================//
 
@@ -46,8 +47,8 @@ const setting = reactive({
  * 点击关闭菜单
  */
 const onClickCloseSideBar = () => {
-  useApp.closeSideBar()
-}
+  useApp.closeSideBar();
+};
 </script>
 
 <style lang="scss">

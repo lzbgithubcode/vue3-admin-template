@@ -25,36 +25,36 @@
 </template>
 
 <script setup>
-import { computed, reactive } from 'vue'
-import RightPanel from '../../../components/right-panel/index.vue'
-import { useAppStore } from '../../../store/modules/app'
-const useApp = useAppStore()
+import { computed, reactive } from 'vue';
+import RightPanel from '../../../components/right-panel/index.vue';
+import { useAppStore } from '../../../store/modules/app';
+const useApp = useAppStore();
 const setting = reactive({
   fixedHeader: computed({
     get: () => useApp.settings.fixedHeader,
     set: (val) => {
-      useApp.actionChangeSettings({ fixedHeader: val })
+      useApp.actionChangeSettings({ fixedHeader: val });
     }
   }),
   showSidebarLogo: computed({
     get: () => useApp.settings.showSidebarLogo,
     set: (val) => {
-      useApp.actionChangeSettings({ showSidebarLogo: val })
+      useApp.actionChangeSettings({ showSidebarLogo: val });
     }
   }),
   showBreadcrumb: computed({
     get: () => useApp.settings.showBreadcrumb,
     set: (val) => {
-      useApp.actionChangeSettings({ showBreadcrumb: val })
+      useApp.actionChangeSettings({ showBreadcrumb: val });
     }
   }),
   showTagsView: computed({
     get: () => useApp.settings.showTagsView,
     set: (val) => {
-      useApp.actionChangeSettings({ showTagsView: val })
+      useApp.actionChangeSettings({ showTagsView: val });
     }
   })
-})
+});
 </script>
 <style scoped lang="scss">
 .p-settings-wrapper {

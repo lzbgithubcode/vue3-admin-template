@@ -14,18 +14,18 @@
 </template>
 
 <script setup>
-import { useAppStore } from '@/store/modules/app.js'
-import { ref } from 'vue'
-const useApp = useAppStore()
+import { useAppStore } from '@/store/modules/app.js';
+import { ref } from 'vue';
+const useApp = useAppStore();
 
-const isActive = ref(useApp.sidebar.opened)
+const isActive = ref(useApp.sidebar.opened);
 
 // 定义方法
 const toggleClick = () => {
-  isActive.value = !isActive.value
-  useApp.toggleSideBar(true)
-  console.log('===========', isActive.value)
-}
+  isActive.value = !isActive.value;
+  useApp.toggleSideBar(true);
+  console.log('===========', isActive.value);
+};
 </script>
 <style scoped lang="scss">
 .hamburger-wrapper {

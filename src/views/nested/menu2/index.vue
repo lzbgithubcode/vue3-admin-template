@@ -12,9 +12,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const dataList = ref([])
+const dataList = ref([]);
 for (let i = 0; i < 100; i++) {
   dataList.value.push({
     id: i,
@@ -22,7 +22,7 @@ for (let i = 0; i < 100; i++) {
     age: i,
     cardNo: Math.random() * 1000000000000000,
     phone: Math.random() * 12345678912
-  })
+  });
 }
 </script>
 <style scoped lang="scss"></style>

@@ -5,16 +5,16 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-import * as ElSvg from '@element-plus/icons-vue'
+import { defineProps } from 'vue';
+import * as ElSvg from '@element-plus/icons-vue';
 const props = defineProps({
   elSvgName: {
     require: true,
     type: String
   }
-})
+});
 // eslint-disable-next-line vue/no-setup-props-destructure
-const { elSvgName } = props
+const { elSvgName } = props;
 </script>
 
 <style scoped lang="scss">

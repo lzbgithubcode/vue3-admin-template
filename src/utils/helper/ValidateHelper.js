@@ -4,5 +4,5 @@
  * @returns
  */
 export function isExternalURL(path) {
-  return /^(https?:|mailto:|tel:)/.test(path)
+  return /^(https?:|mailto:|tel:)/.test(path);
 }

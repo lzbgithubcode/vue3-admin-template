@@ -6,12 +6,12 @@
 </template>
 
 <script setup>
-import { useFullScreen } from '../../../hooks/core/useFullScreen.js'
+import { useFullScreen } from '../../../hooks/core/useFullScreen.js';
 
-const { isFullScreen, toggle } = useFullScreen()
+const { isFullScreen, toggle } = useFullScreen();
 
 // 定义方法
-const toggleFullScreen = () => toggle()
+const toggleFullScreen = () => toggle();
 </script>
 <style scoped lang="scss">
 .full-screen-button {

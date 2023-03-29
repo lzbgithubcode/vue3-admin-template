@@ -4,8 +4,8 @@ export default [
     url: '/api/login',
     type: 'post',
     response: (config) => {
-      const { useName, pwd } = config.body
-      console.log(`登录用户${useName}, 密码${pwd}`)
+      const { useName, pwd } = config.body;
+      console.log(`登录用户${useName}, 密码${pwd}`);
 
       return {
         code: 0,
@@ -20,7 +20,7 @@ export default [
           roles: ['system_role_admin'],
           permissions: ['super_admin']
         }
-      }
+      };
     }
   },
 
@@ -34,7 +34,7 @@ export default [
         description: '退出成功',
         success: true,
         data: 'success'
-      }
+      };
     }
   }
-]
+];

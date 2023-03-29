@@ -4,7 +4,6 @@
       <router-link
         v-for="tag in visitedViews"
         :key="tag.path"
-        tag="span"
         :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
         class="tag-bar-item"
         @click.middle="isAffix(tag) ? '' : closeSelectedTag(tag)"
@@ -15,16 +14,16 @@
 </template>
 
 <script setup>
-import { computed, getCurrentInstance, reactive, watch } from 'vue'
-import ScrollPane from './ScrollPane.vue'
-import { useTagsViewStore } from '../../../store/modules/tagsView.js'
-import { usePermissionStore } from '../../../store/modules/permission'
-import { useRoute } from 'vue-router'
+import { computed, getCurrentInstance, reactive, watch } from 'vue';
+import ScrollPane from './ScrollPane.vue';
+import { useTagsViewStore } from '../../../store/modules/tagsView.js';
+import { usePermissionStore } from '../../../store/modules/permission';
+import { useRoute } from 'vue-router';
 
-const useTags = useTagsViewStore()
-const usePermission = usePermissionStore()
-const $route = useRoute()
-const { proxy } = getCurrentInstance()
+const useTags = useTagsViewStore();
+const usePermission = usePermissionStore();
+const $route = useRoute();
+const { proxy } = getCurrentInstance();
 
 // ============================================定义属性==================================================//
 const state = reactive({
@@ -34,28 +33,28 @@ const state = reactive({
   selectedTag: {},
   currTag: {},
   affixTags: []
-})
-const visitedViews = computed(() => useTags.visitedViews)
-const routes = computed(() => usePermission.routes)
-console.log('=======', routes)
+});
+const visitedViews = computed(() => useTags.visitedViews);
+const routes = computed(() => usePermission.routes);
+console.log('=======', routes);
 // ============================================watch==================================================//
 watch(
   () => $route.path,
   (toPath) => {
-    console.log(toPath)
+    console.log(toPath);
   }
-)
+);
 
 watch(
   () => state.visible,
   (val) => {
     if (val) {
-      document.addEventListener('click', closeVisibleMenuPane)
+      document.addEventListener('click', closeVisibleMenuPane);
     } else {
-      document.removeEventListener('click', closeVisibleMenuPane)
+      document.removeEventListener('click', closeVisibleMenuPane);
     }
   }
-)
+);
 
 // ============================================methods==================================================//
 
@@ -64,7 +63,7 @@ watch(
  * @param {*} tag tag标签
  * @return {*} 是否是固定标签
  */
-const isAffix = (tag) => tag.meta && tag.meta.affix
+const isAffix = (tag) => tag.meta && tag.meta.affix;
 
 /**
  * @description: 关闭选择的菜单面板
@@ -72,13 +71,13 @@ const isAffix = (tag) => tag.meta && tag.meta.affix
  * @return {*}  无返回
  */
 const closeVisibleMenuPane = (event) => {
-  const { classList } = event.target
+  const { classList } = event.target;
   if (classList.contains('tags-view-operate') || classList.contains('el-icon-setting')) {
-    return false
+    return false;
   }
-  state.visible = false
-  return false
-}
+  state.visible = false;
+  return false;
+};
 
 /**
  * @description: 打开菜单面板
@@ -88,9 +87,9 @@ const closeVisibleMenuPane = (event) => {
  */
 const openMenuPane = (tag, $event) => {
   // 左边距
-  const offsetLeft = proxy.$el.getBoundingClientRect().left
-  console.log(offsetLeft, tag, $event)
-}
+  const offsetLeft = proxy.$el.getBoundingClientRect().left;
+  console.log(offsetLeft, tag, $event);
+};
 
 /**
  * @description: 关闭选择的标签
@@ -98,7 +97,7 @@ const openMenuPane = (tag, $event) => {
  * @return {*} void
  */
 const closeSelectedTag = (tag) => {
-  console.log(tag)
-}
+  console.log(tag);
+};
 </script>
 <style scoped lang="scss"></style>
