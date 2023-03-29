@@ -1,6 +1,11 @@
 <template>
   <div class="tag-bar-wrapper">
-    <scroll-pane ref="scrollPane">
+    <!-- 左侧箭头 -->
+    <div class="tag-bar-icon left-arrow">
+      <i-ep-DArrowLeft />
+    </div>
+
+    <scroll-pane ref="scrollPane" class="scroll-container">
       <router-link
         v-for="tag in visitedViews"
         :key="tag.path"
@@ -10,19 +15,19 @@
         @contextmenu.prevent="openMenuPane(tag, $event)"
       />
     </scroll-pane>
+
+    <!-- 右侧箭头 -->
+    <div class="tag-bar-icon right-arrow">
+      <i-ep-DArrowRight />
+    </div>
   </div>
 </template>
 
 <script setup>
-import { computed, getCurrentInstance, reactive, watch } from 'vue';
+import { getCurrentInstance, reactive, watch, ref, onMounted } from 'vue';
 import ScrollPane from './ScrollPane.vue';
-import { useTagsViewStore } from '../../../store/modules/tagsView.js';
-import { usePermissionStore } from '../../../store/modules/permission';
-import { useRoute } from 'vue-router';
+import { useTags } from '../../hooks/useTags';
 
-const useTags = useTagsViewStore();
-const usePermission = usePermissionStore();
-const $route = useRoute();
 const { proxy } = getCurrentInstance();
 
 // ============================================定义属性==================================================//
@@ -34,14 +39,19 @@ const state = reactive({
   currTag: {},
   affixTags: []
 });
-const visitedViews = computed(() => useTags.visitedViews);
-const routes = computed(() => usePermission.routes);
-console.log('=======', routes);
+const { visitedViews, $route, allRoutes, dynamicAddTagView, filterAffixTags } = useTags();
+
+// ============================================life-cycle==================================================//
+onMounted(() => {
+  initTags();
+});
+
 // ============================================watch==================================================//
 watch(
   () => $route.path,
-  (toPath) => {
-    console.log(toPath);
+  () => {
+    console.log('监听路由变化', $route);
+    dynamicAddTagView($route);
   }
 );
 
@@ -59,12 +69,17 @@ watch(
 // ============================================methods==================================================//
 
 /**
+ * 初始化tags
+ */
+const initTags = () => {
+  state.affixTags = filterAffixTags(allRoutes);
+};
+/**
  * @description: 是否是固定标签
  * @param {*} tag tag标签
  * @return {*} 是否是固定标签
  */
 const isAffix = (tag) => tag.meta && tag.meta.affix;
-
 /**
  * @description: 关闭选择的菜单面板
  * @param {*} event 事件
@@ -72,7 +87,7 @@ const isAffix = (tag) => tag.meta && tag.meta.affix;
  */
 const closeVisibleMenuPane = (event) => {
   const { classList } = event.target;
-  if (classList.contains('tags-view-operate') || classList.contains('el-icon-setting')) {
+  if (classList.contains('tag-bar-icon') || classList.contains('el-icon-setting')) {
     return false;
   }
   state.visible = false;
@@ -100,4 +115,42 @@ const closeSelectedTag = (tag) => {
   console.log(tag);
 };
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.tag-bar-wrapper {
+  height: $tagsBarHeight;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #d8dce5;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  // 滚动内容
+  .scroll-container {
+    flex: 1;
+  }
+
+  // 图标
+  .tag-bar-icon {
+    box-sizing: border-box;
+    height: calc(#{$tagsBarHeight} - 1px);
+    line-height: calc(#{$tagsBarHeight} - 1px);
+    background: #fff;
+    box-sizing: border-box;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.left-arrow:hover {
+      cursor: w-resize;
+      box-shadow: 5px 0 5px -6px #ccc;
+    }
+    &.right-arrow:hover {
+      box-shadow: -5px 0 5px -6px #ccc;
+      cursor: e-resize;
+    }
+  }
+}
+</style>

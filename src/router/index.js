@@ -1,10 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import RouterManager from './RouterManager.js';
+import { getStaticRoutes } from './RouterManager.js';
 
+/**
+ * 创建路由
+ */
 const createRouterFunc = () => {
   return createRouter({
     history: createWebHistory(),
-    routes: RouterManager.getStaticRoutes(),
+    routes: getStaticRoutes(),
     scrollBehavior: (to, from, savedPosition) => {
       return new Promise((resolve) => {
         if (savedPosition) {
@@ -27,6 +30,10 @@ router.push = function push(location) {
   return routerPush.call(this, location).catch((error) => error);
 };
 
+/**
+ * @description: 重置路由
+ * @return {*}
+ */
 export function resetRouter() {
   const newRouter = createRouterFunc();
   // 重置路由

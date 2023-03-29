@@ -10,10 +10,11 @@
     <div class="layout-right-wrapper">
       <div :class="{ 'fixed-header': setting.fixedHeader }" class="header">
         <NavBar />
+        <TagsBar v-if="setting.showTagsBar" />
       </div>
       <AppMain />
       <Footer />
-      <el-backtop target=".layout-right-wrapper" :bottom="100">回到顶部</el-backtop>
+      <!-- <el-backtop target=".layout-right-wrapper" :bottom="100">回到顶部</el-backtop> -->
     </div>
 
     <!-- 系统设置 -->
@@ -23,7 +24,7 @@
 
 <script setup>
 import { computed, reactive } from 'vue';
-import { AppMain, NavBar, Footer, SideBar, Settings } from './components/index.js';
+import { AppMain, NavBar, Footer, SideBar, Settings, TagsBar } from './components/index.js';
 import { useAppStore } from '@/store/modules/app.js';
 import { useResizeDevice } from '../hooks/core/useResizeDevice.js';
 
@@ -31,6 +32,7 @@ useResizeDevice();
 const useApp = useAppStore();
 const setting = reactive({
   fixedHeader: computed(() => useApp.settings.fixedHeader),
+  showTagsBar: computed(() => useApp.settings.showTagsView),
   showMobileBg: computed(() => useApp.device == 'mobile' && useApp.sidebar.opened),
   classObj: computed(() => {
     return {

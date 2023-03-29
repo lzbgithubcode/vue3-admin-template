@@ -22,7 +22,8 @@ router.beforeEach(async (to) => {
   ProgressUtil.startProgress();
 
   // 设置页面标题
-  document.title = getPageTitle(to.meta.title);
+  const title = (to.query && to.query.targetTitle) || to.meta.title;
+  document.title = getPageTitle(title);
 
   // 1. 不用校验token的白名单 + 路由存在
   if (whiteNoTokenList.indexOf(to.path) !== -1) {

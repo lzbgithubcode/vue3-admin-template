@@ -1,4 +1,4 @@
-import RouterManager from '../../router/RouterManager';
+import { getAsyncRoutes, getStaticRoutes } from '../../router/RouterManager';
 import { defineStore } from 'pinia';
 const key = 'permission';
 export const usePermissionStore = defineStore(key, {
@@ -15,7 +15,7 @@ export const usePermissionStore = defineStore(key, {
     generateRoutes(roles) {
       return new Promise((resolve) => {
         // 所有异步路由
-        const asyncRoutes = RouterManager.getAsyncRoutes();
+        const asyncRoutes = getAsyncRoutes();
 
         // 通过角色过滤路由
         let accessedRoutes;
@@ -33,7 +33,7 @@ export const usePermissionStore = defineStore(key, {
      */
     concatRoutes(routes) {
       this.$patch((state) => {
-        const constantRoutes = RouterManager.getStaticRoutes();
+        const constantRoutes = getStaticRoutes();
         state.addRoutes = routes;
         state.routes = constantRoutes.concat(routes);
       });

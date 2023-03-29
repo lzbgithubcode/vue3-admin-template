@@ -10,6 +10,7 @@ import * as ElSvg from '@element-plus/icons-vue';
 const props = defineProps({
   elSvgName: {
     require: true,
+    default: '',
     type: String
   }
 });

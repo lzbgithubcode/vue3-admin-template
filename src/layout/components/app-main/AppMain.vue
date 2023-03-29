@@ -1,5 +1,5 @@
 <template>
-  <section class="app-main">
+  <section class="app-main" :class="{ 'show-tag-bar': showTags }">
     <router-view v-slot="{ Component }" :key="key">
       <transition name="fade-transform" mode="out-in">
         <keep-alive :include="cachedViews">
@@ -14,9 +14,11 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useTagsViewStore } from '@/store/modules/tagsView.js';
+import { useTags } from '../../hooks/useTags';
 
 const route = useRoute();
 const useTagsView = useTagsViewStore();
+const { showTags } = useTags();
 
 const cachedViews = computed(() => useTagsView.cachedViews);
 
@@ -30,9 +32,17 @@ const key = computed(() => route.path);
   padding: 15px;
   overflow: hidden;
   box-sizing: border-box;
+
+  &.show-tag-bar {
+    min-height: calc(100vh - #{$navigatorOperationBarHeight} -#{$tagsBarHeight});
+  }
 }
 
 .fixed-header + .app-main {
   margin-top: $navigatorOperationBarHeight;
+
+  &.show-tag-bar {
+    margin-top: $navigatorOperationBarHeight + $tagsBarHeight;
+  }
 }
 </style>

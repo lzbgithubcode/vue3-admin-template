@@ -17,10 +17,10 @@
         @select="selectedMenu"
       >
         <SideBarItem
-          v-for="route in permissionRoutes"
-          :key="route.path"
-          :item="route"
-          :base-path="route.path"
+          v-for="routeItem in permissionRoutes"
+          :key="routeItem.path"
+          :item="routeItem"
+          :base-path="routeItem.path"
         />
       </el-menu>
     </el-scrollbar>
