@@ -6,14 +6,32 @@
     </div>
 
     <scroll-pane ref="scrollPane" class="scroll-container">
-      <router-link
-        v-for="tag in visitedViews"
-        :key="tag.path"
-        :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
-        class="tag-bar-item"
+      <div
+        v-for="(tag, index) in visitedViews"
+        :key="index"
+        :class="['tag-bar-item', linkIsActiveClass(tag), isAffixClass(tag)]"
         @click.middle="isAffix(tag) ? '' : closeSelectedTag(tag)"
         @contextmenu.prevent="openMenuPane(tag, $event)"
-      />
+        @mouseenter.prevent="onMouseEnter(index)"
+        @mouseleave="onMouseLeave(index)"
+      >
+        <router-link :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }">
+          <span> {{ tag.title }}</span>
+        </router-link>
+
+        <span
+          v-if="closeIsActive(tag, index)"
+          class="tag-item-close"
+          @click.prevent.stop="closeSelectedTag(tag)"
+        >
+          <i-ep-Close />
+        </span>
+
+        <div
+          :ref="'schedule' + index"
+          :class="['tag-item-schedule', scheduleIsActiveClass(tag)]"
+        ></div>
+      </div>
     </scroll-pane>
 
     <!-- 右侧箭头 -->
@@ -24,9 +42,10 @@
 </template>
 
 <script setup>
-import { getCurrentInstance, reactive, watch, ref, onMounted } from 'vue';
+import { getCurrentInstance, reactive, watch, onMounted } from 'vue';
 import ScrollPane from './ScrollPane.vue';
 import { useTags } from '../../hooks/useTags';
+import { isAffix, filterAffixTags } from '../../utils/TagHelper.js';
 
 const { proxy } = getCurrentInstance();
 
@@ -39,7 +58,19 @@ const state = reactive({
   currTag: {},
   affixTags: []
 });
-const { visitedViews, $route, allRoutes, dynamicAddTagView, filterAffixTags } = useTags();
+const {
+  visitedViews,
+  $route,
+  allRoutes,
+  linkIsActiveClass,
+  scheduleIsActiveClass,
+  isAffixClass,
+  closeIsActive,
+  dynamicAddTagView,
+  onMouseEnter,
+  onMouseLeave
+} = useTags();
+console.log('获取到的-visitedViews', visitedViews);
 
 // ============================================life-cycle==================================================//
 onMounted(() => {
@@ -73,13 +104,11 @@ watch(
  */
 const initTags = () => {
   state.affixTags = filterAffixTags(allRoutes);
+  for (const tag of state.affixTags) {
+    dynamicAddTagView(tag);
+  }
 };
-/**
- * @description: 是否是固定标签
- * @param {*} tag tag标签
- * @return {*} 是否是固定标签
- */
-const isAffix = (tag) => tag.meta && tag.meta.affix;
+
 /**
  * @description: 关闭选择的菜单面板
  * @param {*} event 事件
@@ -116,41 +145,5 @@ const closeSelectedTag = (tag) => {
 };
 </script>
 <style scoped lang="scss">
-.tag-bar-wrapper {
-  height: $tagsBarHeight;
-  width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #d8dce5;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
-  position: relative;
-  display: flex;
-  align-items: center;
-
-  // 滚动内容
-  .scroll-container {
-    flex: 1;
-  }
-
-  // 图标
-  .tag-bar-icon {
-    box-sizing: border-box;
-    height: calc(#{$tagsBarHeight} - 1px);
-    line-height: calc(#{$tagsBarHeight} - 1px);
-    background: #fff;
-    box-sizing: border-box;
-    width: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &.left-arrow:hover {
-      cursor: w-resize;
-      box-shadow: 5px 0 5px -6px #ccc;
-    }
-    &.right-arrow:hover {
-      box-shadow: -5px 0 5px -6px #ccc;
-      cursor: e-resize;
-    }
-  }
-}
+@import './tagsBar.scss';
 </style>

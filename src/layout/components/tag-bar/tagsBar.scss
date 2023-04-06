@@ -1,0 +1,126 @@
+.tag-bar-wrapper {
+  height: $tagsBarHeight;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #d8dce5;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  // 滚动内容
+  .scroll-container {
+    flex: 1;
+
+    :deep(.el-scrollbar__wrap) {
+      display: flex;
+      align-items: center;
+    }
+    :deep(.el-scrollbar__view) {
+      display: flex;
+      align-items: center;
+    }
+    // 标签格式
+    .tag-bar-item {
+      display: flex;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid #d8dce5;
+      font-size: 14px;
+      padding: 2px 4px;
+      border-radius: 3px 3px 0 0;
+      box-shadow: 0 0 1px #888;
+      box-sizing: border-box;
+      margin-left: 10px;
+      transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+      &:first-child {
+        margin-left: 0px;
+      }
+
+      &:hover {
+        padding-right: 20px;
+      }
+      // 固定标签样式
+      &.affix-tag:hover {
+        padding-right: 4px;
+      }
+      a {
+        text-decoration: none;
+        padding: 0 4px;
+      }
+
+      // 活跃状态
+      &.is-active {
+        color: $theme;
+        padding-right: 20px;
+      }
+      // 活跃+固定标签
+      &.is-active.affix-tag {
+        padding-right: 4px;
+      }
+
+      .tag-item-schedule {
+        height: 2px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: $theme;
+      }
+      // 活跃状态
+      .schedule-active {
+        width: 100%;
+      }
+      // 张开
+      .schedule-out {
+        width: 100%;
+        animation: scheduleOutWidth 400ms ease-in;
+      }
+      .schedule-in {
+        width: 0;
+        animation: scheduleInWidth 400ms ease-in;
+      }
+
+      // 关闭
+      .tag-item-close {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 5px;
+        top: 20%;
+        font-size: 12px;
+        border-radius: 50%;
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        &:hover {
+          background-color: #b4bccc;
+          transform: translate(10%, 0);
+          color: white;
+        }
+      }
+    }
+  }
+
+  // 图标
+  .tag-bar-icon {
+    box-sizing: border-box;
+    height: calc(#{$tagsBarHeight} - 1px);
+    line-height: calc(#{$tagsBarHeight} - 1px);
+    background: #fff;
+    box-sizing: border-box;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.left-arrow:hover {
+      cursor: w-resize;
+      box-shadow: 5px 0 5px -6px #ccc;
+    }
+    &.right-arrow:hover {
+      box-shadow: -5px 0 5px -6px #ccc;
+      cursor: e-resize;
+    }
+  }
+}

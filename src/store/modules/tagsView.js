@@ -14,6 +14,7 @@ export const useTagsViewStore = defineStore('tagsView', {
      */
     addVisitedView(view) {
       this.$patch((state) => {
+        // 如果路由存在就不增加
         if (state.visitedViews.some((v) => v.path === view.path)) return;
         state.visitedViews.push({
           fullPath: view.fullPath,
