@@ -53,13 +53,6 @@ export const useTags = () => {
   });
 
   /**
-   * 动态增加tagView
-   */
-  const dynamicAddTagView = (route) => {
-    route.name && useTagsView.addVisitedView(route);
-  };
-
-  /**
    * @description: 监听鼠标进入标签
    * @param {*} index
    * @return {*}
@@ -86,11 +79,20 @@ export const useTags = () => {
   };
 
   /**
+   * @description: 重置hoverIndex的值
+   * @param {*} index
+   * @return {*}
+   */
+  const resetHoverIndex = (index = -1) => {
+    hoverIndex.value = index;
+  };
+
+  /**
    * @description: 是否是当前活跃的路由
    * @return {*}
    */
   const isActiveRoute = (tag) => {
-    return $route.path == tag.path;
+    return $route.path === tag.path;
   };
 
   return {
@@ -104,8 +106,8 @@ export const useTags = () => {
     scheduleIsActiveClass,
     isAffixClass,
     closeIsActive,
+    resetHoverIndex,
     isActiveRoute,
-    dynamicAddTagView,
     onMouseEnter,
     onMouseLeave
   };

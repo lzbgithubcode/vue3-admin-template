@@ -13,7 +13,7 @@
         @click.middle="isAffix(tag) ? '' : closeSelectedTag(tag)"
         @contextmenu.prevent="openMenuPane(tag, $event)"
         @mouseenter.prevent="onMouseEnter(index)"
-        @mouseleave="onMouseLeave(index)"
+        @mouseleave.prevent="onMouseLeave(index)"
       >
         <router-link :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }">
           <span> {{ tag.title }}</span>
@@ -45,6 +45,7 @@
 import { getCurrentInstance, reactive, watch, onMounted } from 'vue';
 import ScrollPane from './ScrollPane.vue';
 import { useTags } from '../../hooks/useTags';
+import { useTagsOperation } from '../../hooks/useTagsOperation';
 import { isAffix, filterAffixTags } from '../../utils/TagHelper.js';
 
 const { proxy } = getCurrentInstance();
@@ -66,10 +67,12 @@ const {
   scheduleIsActiveClass,
   isAffixClass,
   closeIsActive,
-  dynamicAddTagView,
+  resetHoverIndex,
   onMouseEnter,
   onMouseLeave
 } = useTags();
+
+const { dynamicAddTagView, dynamicDeleteTagView } = useTagsOperation();
 console.log('获取到的-visitedViews', visitedViews);
 
 // ============================================life-cycle==================================================//
@@ -81,7 +84,6 @@ onMounted(() => {
 watch(
   () => $route.path,
   () => {
-    console.log('监听路由变化', $route);
     dynamicAddTagView($route);
   }
 );
@@ -141,7 +143,8 @@ const openMenuPane = (tag, $event) => {
  * @return {*} void
  */
 const closeSelectedTag = (tag) => {
-  console.log(tag);
+  resetHoverIndex();
+  dynamicDeleteTagView(tag);
 };
 </script>
 <style scoped lang="scss">

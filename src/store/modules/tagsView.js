@@ -5,7 +5,7 @@ export const useTagsViewStore = defineStore('tagsView', {
   state: () => {
     return {
       visitedViews: [],
-      cachedViews: []
+      pageCacheList: []
     };
   },
   actions: {
@@ -14,28 +14,58 @@ export const useTagsViewStore = defineStore('tagsView', {
      */
     addVisitedView(view) {
       this.$patch((state) => {
-        // 如果路由存在就不增加
-        if (state.visitedViews.some((v) => v.path === view.path)) return;
-        state.visitedViews.push({
+        // 1.标题 - 不能增加标题是空的标签
+        const title = (view.query && view.query.targetTitle) || view.meta.title;
+        if (!title || title.length === 0) return;
+
+        // 2.路径 - 不能重复
+        const tagPath = view.path;
+        const isExitPath = state.visitedViews.some((v) => v.path === tagPath);
+        if (isExitPath) return;
+
+        // 3. 保存标签
+        const tagItem = {
           fullPath: view.fullPath,
           meta: view.meta,
           name: view.name,
           params: view.params,
           path: view.path,
           query: view.query,
-          title: (view.query && view.query.targetTitle) || view.meta.title || 'no-name'
-        });
+          title: title
+        };
+        state.visitedViews.push(tagItem);
+      });
+    },
+    /**
+     * 移除标签
+     */
+    deleteVisitedView(path) {
+      this.$patch((state) => {
+        const findIndex = state.visitedViews.findIndex((v) => v.path === path);
+        if (findIndex === -1) return;
+        state.visitedViews.splice(findIndex, 1);
+        console.log('移除之后的 结果====', state.visitedViews);
       });
     },
     /**
      * 新增缓存标签
      */
-    addCachedView(view) {
+    addPageCached(view) {
       this.$patch((state) => {
-        if (state.cachedViews.includes(view.name)) return;
+        if (state.pageCacheList.includes(view.name)) return;
         if (!view.meta.noCache) {
-          state.cachedViews.push(view.name);
+          state.pageCacheList.push(view.name);
         }
+      });
+    },
+    /**
+     * 移除缓存标签
+     */
+    removePageCached(path) {
+      this.$patch((state) => {
+        const findIndex = state.pageCacheList.findIndex((v) => v.path === path);
+        if (findIndex === -1) return;
+        state.pageCacheList.splice(findIndex, 1);
       });
     }
   },
