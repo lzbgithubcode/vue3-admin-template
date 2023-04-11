@@ -1,4 +1,4 @@
-import { computed, ref, getCurrentInstance } from 'vue';
+import { computed, ref, getCurrentInstance, reactive } from 'vue';
 import { useAppStore } from '@/store/modules/app.js';
 import { useTagsViewStore } from '../../store/modules/tagsView';
 import { useRoute, useRouter } from 'vue-router';
@@ -16,6 +16,31 @@ export const useTags = () => {
   const router = useRouter();
   const allRoutes = usePermission.permissionAllRoutes;
   const hoverIndex = ref(-1);
+  const contextPaneLeft = ref(0);
+  const contextPaneTop = ref(0);
+  const visible = ref(false);
+  const rightPaneMenuList = reactive([
+    {
+      icon: '',
+      text: '重新加载',
+      show: true
+    },
+    {
+      icon: '',
+      text: '关闭当前标签',
+      show: true
+    },
+    {
+      icon: '',
+      text: '关闭其他标签',
+      show: true
+    },
+    {
+      icon: '',
+      text: '关闭所有标签',
+      show: true
+    }
+  ]);
   // 是否显示tag
   const showTags = computed(() => {
     return useApp.settings.showTagsView;
@@ -52,6 +77,14 @@ export const useTags = () => {
     };
   });
 
+  /**
+   * @description: 获取右键菜单的样式
+   * @param {*} computed
+   * @return {*}
+   */
+  const getContextPaneStyle = computed(() => {
+    return { left: contextPaneLeft.value + 'px', top: contextPaneTop.value + 'px' };
+  });
   /**
    * @description: 监听鼠标进入标签
    * @param {*} index
@@ -95,6 +128,28 @@ export const useTags = () => {
     return $route.path === tag.path;
   };
 
+  /**
+   * @description:显示 所有菜单
+   * @return {*}
+   */
+  const showAllPaneMenu = () => {
+    rightPaneMenuList.map((item) => {
+      item.show = true;
+    });
+  };
+
+  /**
+   * @description:显示 所有菜单
+   * @return {*}
+   */
+  const showRefreshPaneMenu = () => {
+    rightPaneMenuList.map((item) => {
+      item.show = false;
+    });
+    // 显示刷新
+    rightPaneMenuList[0].show = true;
+  };
+
   return {
     showTags,
     visitedViews,
@@ -106,6 +161,12 @@ export const useTags = () => {
     scheduleIsActiveClass,
     isAffixClass,
     closeIsActive,
+    contextPaneLeft,
+    visible,
+    getContextPaneStyle,
+    rightPaneMenuList,
+    showRefreshPaneMenu,
+    showAllPaneMenu,
     resetHoverIndex,
     isActiveRoute,
     onMouseEnter,

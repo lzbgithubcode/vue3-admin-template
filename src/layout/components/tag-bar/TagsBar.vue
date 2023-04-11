@@ -38,6 +38,20 @@
     <div class="tag-bar-icon right-arrow">
       <i-ep-DArrowRight />
     </div>
+
+    <!-- 右键菜单 -->
+    <transition name="el-zoom-in-top">
+      <ul
+        v-show="visible"
+        :key="Math.random()"
+        :style="getContextPaneStyle"
+        class="context-menu-pane"
+      >
+        <div v-for="(menu, key) in rightPaneMenuList" :key="key" class="context-menu-row">
+          <li v-if="menu.show" @click="selectedPaneMenu(key, menu)">{{ menu.text }}</li>
+        </div>
+      </ul>
+    </transition>
   </div>
 </template>
 
@@ -52,11 +66,7 @@ const { proxy } = getCurrentInstance();
 
 // ============================================定义属性==================================================//
 const state = reactive({
-  visible: false,
-  top: 0,
-  left: 0,
   selectedTag: {},
-  currTag: {},
   affixTags: []
 });
 const {
@@ -67,12 +77,18 @@ const {
   scheduleIsActiveClass,
   isAffixClass,
   closeIsActive,
+  contextPaneLeft,
+  visible,
+  showRefreshPaneMenu,
+  showAllPaneMenu,
+  rightPaneMenuList,
+  getContextPaneStyle,
   resetHoverIndex,
   onMouseEnter,
   onMouseLeave
 } = useTags();
 
-const { dynamicAddTagView, dynamicDeleteTagView } = useTagsOperation();
+const { dynamicAddTagView, dynamicDeleteTagView, refreshCurrentTagView } = useTagsOperation();
 console.log('获取到的-visitedViews', visitedViews);
 
 // ============================================life-cycle==================================================//
@@ -89,7 +105,7 @@ watch(
 );
 
 watch(
-  () => state.visible,
+  () => visible.value,
   (val) => {
     if (val) {
       document.addEventListener('click', closeVisibleMenuPane);
@@ -121,7 +137,7 @@ const closeVisibleMenuPane = (event) => {
   if (classList.contains('tag-bar-icon') || classList.contains('el-icon-setting')) {
     return false;
   }
-  state.visible = false;
+  visible.value = false;
   return false;
 };
 
@@ -133,8 +149,46 @@ const closeVisibleMenuPane = (event) => {
  */
 const openMenuPane = (tag, $event) => {
   // 左边距
-  const offsetLeft = proxy.$el.getBoundingClientRect().left;
-  console.log(offsetLeft, tag, $event);
+  const rect = proxy.$el.getBoundingClientRect();
+  const left = rect.left;
+  // 设置菜单的宽度
+  const menuPaneWidth = 105;
+
+  // 正常标签距离左侧的间距
+  const normalLeftP = $event.clientX - left;
+
+  // 最大的左侧间距
+  const maxLeftP = rect.width - menuPaneWidth;
+
+  // 结果左侧值
+  if (normalLeftP > maxLeftP) {
+    contextPaneLeft.value = maxLeftP;
+  } else {
+    contextPaneLeft.value = normalLeftP;
+  }
+
+  showAllPaneMenu();
+
+  // 1. 如果是固定标签-只是刷新
+  if (tag && tag.meta && tag.meta.affix) {
+    showRefreshPaneMenu();
+  }
+  state.selectedTag = tag;
+  visible.value = true;
+};
+
+/**
+ * @description: 选择菜单
+ * @return {*}
+ */
+const selectedPaneMenu = (index) => {
+  switch (index) {
+    case 0: {
+      // 刷新
+      refreshCurrentTagView(state.selectedTag);
+      break;
+    }
+  }
 };
 
 /**

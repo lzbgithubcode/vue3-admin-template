@@ -123,4 +123,29 @@
       cursor: e-resize;
     }
   }
+
+  // 右键菜单
+  .context-menu-pane {
+    position: absolute;
+    padding: 5px;
+    background-color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 400;
+
+    outline: 0;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+    list-style-type: none;
+    li {
+      width: 100%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      color: #333;
+      &:hover {
+        color: $theme;
+      }
+    }
+  }
 }

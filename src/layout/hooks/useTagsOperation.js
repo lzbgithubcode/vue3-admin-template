@@ -70,8 +70,21 @@ export const useTagsOperation = () => {
       router.replace({ path: BaseRoute.ROOT_PATH });
     }
   };
+  /**
+   * @description: 刷新标签
+   * @param {*} route
+   * @return {*}
+   */
+  const refreshCurrentTagView = (route) => {
+    const { fullPath, query } = route;
+    router.replace({
+      path: '/redirect' + fullPath,
+      query: query
+    });
+  };
 
   return {
+    refreshCurrentTagView,
     dynamicAddTagView,
     dynamicDeleteTagView,
     selectedPointTagView

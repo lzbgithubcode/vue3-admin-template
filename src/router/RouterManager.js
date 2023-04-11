@@ -14,7 +14,8 @@ const getStaticRoutes = () => {
         {
           path: '/redirect/:path*',
           name: 'Redirect',
-          component: () => import('@/views/redirect/index')
+          component: () => import('@/views/redirect/index.vue'),
+          hidden: true
         }
       ]
     },
