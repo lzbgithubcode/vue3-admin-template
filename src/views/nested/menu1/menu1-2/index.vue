@@ -1,5 +1,5 @@
 <template>
-  <div>我是菜单menu1-2</div>
+  <div>我是菜单menu1-2内容内容内容内容内容内容</div>
 </template>
 
 <script setup></script>
