@@ -66,7 +66,7 @@ const { proxy } = getCurrentInstance();
 
 // ============================================定义属性==================================================//
 const state = reactive({
-  selectedTag: {},
+  mouseSelectTag: {}, //菜单鼠标选择的tag
   affixTags: []
 });
 const {
@@ -173,7 +173,7 @@ const openMenuPane = (tag, $event) => {
   if (tag && tag.meta && tag.meta.affix) {
     showRefreshPaneMenu();
   }
-  state.selectedTag = tag;
+  state.mouseSelectTag = tag;
   visible.value = true;
 };
 
@@ -185,7 +185,12 @@ const selectedPaneMenu = (index) => {
   switch (index) {
     case 0: {
       // 刷新
-      refreshCurrentTagView(state.selectedTag);
+      refreshCurrentTagView(state.mouseSelectTag);
+      break;
+    }
+    case 1: {
+      // 关闭当前的标签
+      closeSelectedTag(state.mouseSelectTag);
       break;
     }
   }
@@ -198,7 +203,7 @@ const selectedPaneMenu = (index) => {
  */
 const closeSelectedTag = (tag) => {
   resetHoverIndex();
-  dynamicDeleteTagView(tag);
+  dynamicDeleteTagView(tag, true);
 };
 </script>
 <style scoped lang="scss">
