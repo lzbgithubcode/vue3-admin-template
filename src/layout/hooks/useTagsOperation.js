@@ -1,7 +1,7 @@
 import { useTagsViewStore } from '../../store/modules/tagsView';
 import { useRouter } from 'vue-router';
 import { BaseRoute } from '../../utils/constants/RoutePathConstants';
-import { ref } from 'vue';
+import { isAffix } from '../utils/TagHelper.js';
 
 export const useTagsOperation = () => {
   // tag store
@@ -10,7 +10,6 @@ export const useTagsOperation = () => {
   // 定义当前的tag path 与上一个tag path
   let currentPath = '';
   let preTagPath = '';
-  let currentSelectedTag = ref(null);
   // 路由
   const router = useRouter();
   /**
@@ -25,12 +24,8 @@ export const useTagsOperation = () => {
       // 记录当前的
       currentPath = route.path;
 
-      // 记录当前的tag
-      currentSelectedTag = route;
-      console.log('记录当前选择的tag===', currentSelectedTag);
       // 缓存
       useTagsView.addVisitedView(route);
-      useTagsView.addPageCached(route);
     }
   };
   /**
@@ -52,7 +47,6 @@ export const useTagsOperation = () => {
 
     // 2. 移除标签
     useTagsView.deleteVisitedView(tag.path);
-    useTagsView.removePageCached(tag.path);
 
     // 不选择上一个
     if (!selectLasted) return true;
@@ -70,6 +64,36 @@ export const useTagsOperation = () => {
       selectedPointTagView(lastIndex);
     } else {
       selectedPointTagView(valueIndex - 1);
+    }
+  };
+  /**
+   * @description: 批量删除标签
+   * @param {*} tag  指定不能删除的标签,其他都删除
+   * @return {*}
+   */
+  const dynamicPatchDeleteTagView = (tag) => {
+    if (!useTagsView.visitedViews || useTagsView.visitedViews.length === 0) {
+      return false;
+    }
+
+    // 过滤数据
+    const filterViews = useTagsView.visitedViews.filter(
+      (item) => isAffix(item) || (tag && tag.path == item.path)
+    );
+    // 更新数据
+    useTagsView.updateVisitedViews(filterViews);
+
+    // 指定选择标签
+    if (tag) {
+      // 选中-剩余的tag
+      const valueIndex = useTagsView.visitedViews.findIndex((item) => {
+        return item.path === tag.path;
+      });
+      if (valueIndex === -1) return false;
+      selectedPointTagView(valueIndex);
+    } else {
+      // 不存在-选择第一个固定的tag
+      selectedPointTagView(-1);
     }
   };
   /**
@@ -102,6 +126,7 @@ export const useTagsOperation = () => {
     refreshCurrentTagView,
     dynamicAddTagView,
     dynamicDeleteTagView,
+    dynamicPatchDeleteTagView,
     selectedPointTagView
   };
 };

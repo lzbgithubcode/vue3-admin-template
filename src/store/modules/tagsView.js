@@ -34,6 +34,7 @@ export const useTagsViewStore = defineStore('tagsView', {
           title: title
         };
         state.visitedViews.push(tagItem);
+        this.addPageCached(view);
       });
     },
     /**
@@ -46,7 +47,18 @@ export const useTagsViewStore = defineStore('tagsView', {
         state.visitedViews.splice(findIndex, 1);
         console.log('移除之后的 结果====', state.visitedViews);
       });
+      this.removePageCached(path);
     },
+    /**
+     * @description: 更新标签
+     * @return {*}
+     */
+    updateVisitedViews(visitedViews) {
+      this.$patch((state) => {
+        state.visitedViews = visitedViews;
+      });
+    },
+
     /**
      * 新增缓存标签
      */
@@ -66,6 +78,20 @@ export const useTagsViewStore = defineStore('tagsView', {
         const findIndex = state.pageCacheList.findIndex((v) => v.path === path);
         if (findIndex === -1) return;
         state.pageCacheList.splice(findIndex, 1);
+      });
+    },
+    /**
+     * @description: 更新缓存页面
+     * @param {*} visitedViews
+     * @return {*}
+     */
+    updatePageCache(visitedViews) {
+      this.$patch((state) => {
+        state.pageCacheList = [];
+        visitedViews &&
+          visitedViews.map((item) => {
+            this.addPageCached(item);
+          });
       });
     }
   },

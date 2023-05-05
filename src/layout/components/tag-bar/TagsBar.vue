@@ -88,7 +88,12 @@ const {
   onMouseLeave
 } = useTags();
 
-const { dynamicAddTagView, dynamicDeleteTagView, refreshCurrentTagView } = useTagsOperation();
+const {
+  dynamicAddTagView,
+  dynamicDeleteTagView,
+  refreshCurrentTagView,
+  dynamicPatchDeleteTagView
+} = useTagsOperation();
 console.log('获取到的-visitedViews', visitedViews);
 
 // ============================================life-cycle==================================================//
@@ -193,6 +198,16 @@ const selectedPaneMenu = (index) => {
       closeSelectedTag(state.mouseSelectTag);
       break;
     }
+    case 2: {
+      // 关闭其他标签
+      closeOtherTag(state.mouseSelectTag);
+      break;
+    }
+    case 3: {
+      // 关闭所有标签
+      closeAllTags(state.mouseSelectTag);
+      break;
+    }
   }
 };
 
@@ -204,6 +219,24 @@ const selectedPaneMenu = (index) => {
 const closeSelectedTag = (tag) => {
   resetHoverIndex();
   dynamicDeleteTagView(tag, true);
+};
+/**
+ * @description: 关闭其他标签
+ * @param {*} tag tag标签
+ * @return {*}
+ */
+const closeOtherTag = (tag) => {
+  resetHoverIndex();
+  dynamicPatchDeleteTagView(tag);
+};
+/**
+ * @description: 关闭所有标签
+ * @param {*} tag tag标签
+ * @return {*}
+ */
+const closeAllTags = () => {
+  resetHoverIndex();
+  dynamicPatchDeleteTagView();
 };
 </script>
 <style scoped lang="scss">
