@@ -106,6 +106,36 @@ const getAsyncRoutes = () => {
           meta: { title: '百度', elIcon: 'Position' }
         }
       ]
+    },
+    {
+      path: '/func',
+      redirect: '/func/water/mark',
+      component: Layout,
+      meta: {
+        title: '功能',
+        elIcon: 'ChatRound'
+      },
+      name: 'Nested2',
+      children: [
+        {
+          path: '/func/water/mark',
+          name: 'WaterMark',
+          component: () => import('@/views/function/WaterMark.vue'),
+          meta: { title: '水印' }
+        },
+        {
+          path: '/func/print',
+          name: 'Print',
+          component: () => import('@/views/function/Print.vue'),
+          meta: { title: '打印' }
+        },
+        {
+          path: '/func/down',
+          name: 'DownPage',
+          component: () => import('@/views/function/DownPage.vue'),
+          meta: { title: '下载' }
+        }
+      ]
     }
   ];
 };
