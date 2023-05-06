@@ -1,7 +1,7 @@
 <template>
   <section class="app-main" :class="{ 'show-tag-bar': showTags }">
     <router-view v-slot="{ Component }" :key="key">
-      <transition name="fade-transform" mode="out-in">
+      <transition name="fade-transform" mode="out-in" :appear="true">
         <keep-alive :include="cachedViews">
           <component :is="Component" />
         </keep-alive>
@@ -28,21 +28,27 @@ const key = computed(() => route.path);
 @import '@/styles/transition.scss';
 .app-main {
   position: relative;
-  min-height: calc(100vh - #{$navigatorOperationBarHeight});
-  padding: 15px;
   overflow: hidden;
   box-sizing: border-box;
+  padding: 10px;
 
   &.show-tag-bar {
-    min-height: calc(100vh - #{$navigatorOperationBarHeight} -#{$tagsBarHeight});
+    margin-top: 0;
+    min-height: auto;
   }
-}
+  &.app-main-fixed {
+    margin-top: $navigatorOperationBarHeight;
+    margin-bottom: $footerBarHeight;
+    min-height: calc(100vh - #{$navigatorOperationBarHeight} - #{$footerBarHeight});
+    height: calc(100vh - #{$navigatorOperationBarHeight} - #{$footerBarHeight});
+  }
 
-.fixed-header + .app-main {
-  margin-top: $navigatorOperationBarHeight;
-
-  &.show-tag-bar {
+  &.app-main-fixed.show-tag-bar {
     margin-top: $navigatorOperationBarHeight + $tagsBarHeight;
+    min-height: calc(
+      100vh - #{$navigatorOperationBarHeight} - #{$tagsBarHeight} - #{$footerBarHeight}
+    );
+    height: calc(100vh - #{$navigatorOperationBarHeight} - #{$tagsBarHeight} - #{$footerBarHeight});
   }
 }
 </style>

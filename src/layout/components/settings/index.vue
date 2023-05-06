@@ -5,7 +5,6 @@
         <span>是否固定头部</span>
         <el-switch v-model="setting.fixedHeader" class="c-row-item-switch" />
       </div>
-
       <div class="c-row-item">
         <span>是否显示LOGO</span>
         <el-switch v-model="setting.showSidebarLogo" class="c-row-item-switch" />

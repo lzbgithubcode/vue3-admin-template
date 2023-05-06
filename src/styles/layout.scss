@@ -100,7 +100,6 @@
   // 右侧内容
   .layout-right-wrapper {
     position: relative;
-    min-height: 100%;
     height: 100vh;
     margin-left: $sideBarMaxWidth;
     transition: margin-left 0.28s;
@@ -113,6 +112,25 @@
       z-index: 9;
       width: calc(100% - #{$sideBarMaxWidth});
       transition: width 0.28s;
+    }
+
+    // 固定底部
+    .fixed-footer {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      z-index: 9;
+      width: calc(100% - #{$sideBarMaxWidth});
+      transition: width 0.28s;
+    }
+  }
+
+  // 右侧头部固定
+  .layout-right-fixed {
+    overflow: hidden;
+
+    .app-main-fixed {
+      overflow: auto;
     }
   }
 }

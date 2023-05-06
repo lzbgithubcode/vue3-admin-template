@@ -7,14 +7,13 @@
     <SideBar class="layout-side-bar" />
 
     <!-- 右侧内容 -->
-    <div class="layout-right-wrapper">
+    <div class="layout-right-wrapper" :class="{ 'layout-right-fixed': setting.fixedHeader }">
       <div :class="{ 'fixed-header': setting.fixedHeader }" class="header">
         <NavBar />
         <TagsBar v-if="setting.showTagsBar" />
       </div>
-      <AppMain />
-      <Footer />
-      <!-- <el-backtop target=".layout-right-wrapper" :bottom="100">回到顶部</el-backtop> -->
+      <AppMain :class="{ 'app-main-fixed': setting.fixedHeader }" />
+      <Footer :class="{ 'fixed-footer': setting.fixedHeader }" />
     </div>
 
     <!-- 系统设置 -->
